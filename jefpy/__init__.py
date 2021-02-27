@@ -48,10 +48,13 @@ Tested using:
 * pytest==6.1.1 (for unit tests)
 
 
-# API documentation
+# Instructions
 
 ## Examples
 To get started with some examples look at the Jupyter Notebooks in the "notebooks\" folder.
+
+## Code documentation
+Documentation is created using pdoc3. See the "doc\" folder. The documentation is based on docstrings and the code structure. 
 
 ## Main workflow
 The basic procedure of using the package is as follows:
