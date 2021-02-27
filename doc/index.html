@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>jefpy API documentation</title>
+<meta name="description" content="* Tag-line: Closed form electromagnetic solver.
+* Author: Leon van Kouwen, lvankouwen@gmail.com
+* Last updated: 2021-02-27 …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Package <code>jefpy</code></h1>
+</header>
+<section id="section-intro">
+<ul>
+<li>Tag-line: Closed form electromagnetic solver.</li>
+<li>Author: Leon van Kouwen, lvankouwen@gmail.com </li>
+<li>Last updated: 2021-02-27</li>
+</ul>
+<h1 id="about-jefpy">About jefpy</h1>
+<p>jefpy is a package for simulating electromagnetic fields. The
+computations are based on Jefimenko's equations, which are
+essentially the integral form of Maxwell equations, evaluated
+at retarded time.</p>
+<p>A big advantage over FEM or FDTD simulations is that no mesh is
+required. In addition, when only a few sample points are required,
+it can be much faster. The big limitation, however, is that material
+properties can't be accounted for (at least currently not). In
+essence it is a free space simulator with sources.</p>
+<p>Despite this limitation, this package can be very convenient to test
+simple systems. Simulations are easy to set up, fast, and standard
+visualization shows one quickly what is going on.</p>
+<p>For low frequencies the results are equal to the quasi-static use of
+the Coulomb law and the Biot-Savart law. For higher frequencies, when the
+quasi-static approach breaks down, this packages remains valid.</p>
+<p>This package is just released. Please help make it more mature! This can be done
+by filing issues, request and suggestions here on github. If would also be happy
+to hear what you are using it for.</p>
+<h1 id="how-do-i-get-set-up">How do I get set up?</h1>
+<h2 id="installation">Installation</h2>
+<p>Navigate to the package folder and use the following command to install:</p>
+<pre><code>pip install .
+</code></pre>
+<h2 id="dependencies">Dependencies</h2>
+<p>Tested using:</p>
+<ul>
+<li>python==3.8.0</li>
+<li>numpy==1.18.1</li>
+<li>matplotlib==3.3.2 (only if visualizations are used)</li>
+<li>pytest==6.1.1 (for unit tests)</li>
+</ul>
+<h1 id="api-documentation">API documentation</h1>
+<h2 id="examples">Examples</h2>
+<p>To get started with some examples look at the Jupyter Notebooks in the "notebooks" folder.</p>
+<h2 id="main-workflow">Main workflow</h2>
+<p>The basic procedure of using the package is as follows:</p>
+<ul>
+<li>Create one or more sources</li>
+<li>Combine multiple sources in a SourceCollection</li>
+<li>Use the methods .E(r, t=0.0) and .B(r, t=0.0) to calculate fields.</li>
+</ul>
+<p>When using the visualization tools of the package:</p>
+<ul>
+<li>Define the observation location set (points, surface, &hellip;)</li>
+<li>Combine the SourceColletion and the observation locations in a Observer object</li>
+<li>Pass the .E or .B callbacks to the visualization objects.</li>
+</ul>
+<h2 id="dimensions">Dimensions</h2>
+<p>By convention the last dimension is always used for the directional
+components (x,y,z) or (r, theta, phi), (Ex, Ey, Ez) etc. So all
+vectorfields have shape signature [&hellip;, 3] when time series are used,
+the first dimension is used, giving the signature [Nt, &hellip;, 3]
+The package can handle any number of dimensions in between. Some examples:</p>
+<ul>
+<li>Electric field sampled at a point, for different times: [Nt, 3]</li>
+<li>Electric field sampled at a line, for different times: [Nt, Nu, 3]</li>
+<li>Electric field sampled on a surface: [Nu, Nv, 3]</li>
+<li>Electric field sampled in a volume, for different times: [Nt, Nu, Nv, Nw, 3]</li>
+<li>Electric field sampled in a set of volumes, for different times: [Nt, Nset, Nu, Nv, Nw, 3]</li>
+</ul>
+<h2 id="polymorphism-of-properties">Polymorphism of properties</h2>
+<p>Most properties are time-dependent callbacks, but can be set as static
+vectors or values. Note that internally when passing a static value
+to a source constructor, a callback is generated which returns the static
+value for any t.</p>
+<p>For example the location property can be set by passing a function reference
+with a time argument which outputs the location vector. Alternatively
+one can input a vector directly and rely on the internal jefpy mechanics to
+make it a callback.</p>
+<h2 id="sourcecollection">SourceCollection</h2>
+<p>Source can be combined by using the SourceCollection class. This
+class inherits from dict, and can be used as such. In addition it has
+the methods E, B and S. These methods give the combined fields of all
+sources in the collection. Note that nesting of source collections is
+possible, allowing very flexible grouping constructions of sources.
+Source collections can be created by using the SourceCollection consturctor directly,
+but the '+' for Source and SourceCollection is also functional yielding
+the following SourceCollection arithmetic:</p>
+<ul>
+<li>Source + Source = new SourceCollection</li>
+<li>Source + SourceCollection = original SourceCollection object,
+with the Source object included.</li>
+<li>SourceCollection + SourceCollection = left side SourceCollection,
+with all the sources from the second SourceCollection added.</li>
+</ul>
+<h2 id="observers">Observers</h2>
+<p>It can be convenient to pre-define the location(s) on which to evaluate
+the field ons. The Observer class manages this by yielding the methods
+E(t), B(t), S(t). Note that these are only time-dependent.</p>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>All units are SI.</li>
+<li>Currently the permittivity and permeability of free space are fixed
+for the module and set in "physics.Constants".</li>
+<li>the time parameter is by default always 0.0. This can be used for static
+configurations by omitting the t argument, i.e. .E(r) and .B(r).</li>
+</ul>
+<p>See the docs folder for additional information. The docstrings do not preserve
+linebreaks so consider using "EXPAND SOURCE CODE" when inspecting a method.</p>
+<h2 id="developers">Developers</h2>
+<p>See the test folder for the available tests. To run all tests, install
+pytest and run from the jefpy folder:</p>
+<pre><code>pytest tests
+</code></pre>
+<ul>
+<li>When creating new sources, inherit from Source, PointSource or SourceCollection.</li>
+<li>For point sources, overwrite <code>E_retared_coordinates</code> and/or <code>B_retared_coordinates</code>
+by assuming the source is located at the origin. The retarded coordinates functionality
+handle the positioning in space.</li>
+<li>To achieve polymorphism of properties the JProperty class is used extensively. Note that
+it manipulates the set operator ("=") of attributes that are defined as class attributes.
+Check out the code in
+the utils module.</li>
+</ul>
+<h1 id="possible-future-work">Possible Future Work</h1>
+<ul>
+<li>Implement a dynamic electric point source (Liénard–Wiechert potential)</li>
+<li>Implement antenna's</li>
+<li>Support for simple uw materials</li>
+<li>Support for simple dielectric materials</li>
+<li>Support reflective planes</li>
+</ul>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+
+* Tag-line: Closed form electromagnetic solver.
+* Author: Leon van Kouwen, lvankouwen@gmail.com 
+* Last updated: 2021-02-27
+
+
+# About jefpy
+
+jefpy is a package for simulating electromagnetic fields. The
+computations are based on Jefimenko&#39;s equations, which are
+essentially the integral form of Maxwell equations, evaluated
+at retarded time.
+
+A big advantage over FEM or FDTD simulations is that no mesh is
+required. In addition, when only a few sample points are required,
+it can be much faster. The big limitation, however, is that material
+properties can&#39;t be accounted for (at least currently not). In
+essence it is a free space simulator with sources.
+
+Despite this limitation, this package can be very convenient to test
+simple systems. Simulations are easy to set up, fast, and standard
+visualization shows one quickly what is going on.
+
+For low frequencies the results are equal to the quasi-static use of
+the Coulomb law and the Biot-Savart law. For higher frequencies, when the
+quasi-static approach breaks down, this packages remains valid.
+
+This package is just released. Please help make it more mature! This can be done
+by filing issues, request and suggestions here on github. If would also be happy
+to hear what you are using it for.
+
+
+# How do I get set up?
+
+## Installation
+Navigate to the package folder and use the following command to install:
+
+    pip install .
+
+## Dependencies
+
+Tested using:
+
+* python==3.8.0
+* numpy==1.18.1
+* matplotlib==3.3.2 (only if visualizations are used)
+* pytest==6.1.1 (for unit tests)
+
+
+# API documentation
+
+## Examples
+To get started with some examples look at the Jupyter Notebooks in the &#34;notebooks\&#34; folder.
+
+## Main workflow
+The basic procedure of using the package is as follows:
+
+* Create one or more sources
+* Combine multiple sources in a SourceCollection
+* Use the methods .E(r, t=0.0) and .B(r, t=0.0) to calculate fields.
+
+When using the visualization tools of the package:
+
+* Define the observation location set (points, surface, ...)
+* Combine the SourceColletion and the observation locations in a Observer object
+* Pass the .E or .B callbacks to the visualization objects.
+
+## Dimensions
+By convention the last dimension is always used for the directional
+components (x,y,z) or (r, theta, phi), (Ex, Ey, Ez) etc. So all
+vectorfields have shape signature [..., 3] when time series are used,
+the first dimension is used, giving the signature [Nt, ..., 3]
+The package can handle any number of dimensions in between. Some examples:
+
+- Electric field sampled at a point, for different times: [Nt, 3]
+- Electric field sampled at a line, for different times: [Nt, Nu, 3]
+- Electric field sampled on a surface: [Nu, Nv, 3]
+- Electric field sampled in a volume, for different times: [Nt, Nu, Nv, Nw, 3]
+- Electric field sampled in a set of volumes, for different times: [Nt, Nset, Nu, Nv, Nw, 3]
+
+## Polymorphism of properties
+Most properties are time-dependent callbacks, but can be set as static
+vectors or values. Note that internally when passing a static value
+to a source constructor, a callback is generated which returns the static
+value for any t.
+
+For example the location property can be set by passing a function reference
+with a time argument which outputs the location vector. Alternatively
+one can input a vector directly and rely on the internal jefpy mechanics to
+make it a callback.
+
+## SourceCollection
+Source can be combined by using the SourceCollection class. This
+class inherits from dict, and can be used as such. In addition it has
+the methods E, B and S. These methods give the combined fields of all
+sources in the collection. Note that nesting of source collections is
+possible, allowing very flexible grouping constructions of sources.
+Source collections can be created by using the SourceCollection consturctor directly,
+but the &#39;+&#39; for Source and SourceCollection is also functional yielding
+the following SourceCollection arithmetic:
+
+- Source + Source = new SourceCollection
+- Source + SourceCollection = original SourceCollection object,
+with the Source object included.
+- SourceCollection + SourceCollection = left side SourceCollection,
+with all the sources from the second SourceCollection added.
+
+## Observers
+It can be convenient to pre-define the location(s) on which to evaluate
+the field ons. The Observer class manages this by yielding the methods
+E(t), B(t), S(t). Note that these are only time-dependent.
+
+## Notes
+* All units are SI.
+* Currently the permittivity and permeability of free space are fixed
+for the module and set in &#34;physics.Constants&#34;.
+* the time parameter is by default always 0.0. This can be used for static
+configurations by omitting the t argument, i.e. .E(r) and .B(r).
+
+See the docs folder for additional information. The docstrings do not preserve
+linebreaks so consider using &#34;EXPAND SOURCE CODE&#34; when inspecting a method.
+
+
+## Developers
+
+See the test folder for the available tests. To run all tests, install
+pytest and run from the jefpy folder:
+
+    pytest tests
+
+- When creating new sources, inherit from Source, PointSource or SourceCollection.
+- For point sources, overwrite `E_retared_coordinates` and/or `B_retared_coordinates`
+by assuming the source is located at the origin. The retarded coordinates functionality
+handle the positioning in space.
+- To achieve polymorphism of properties the JProperty class is used extensively. Note that
+it manipulates the set operator (&#34;=&#34;) of attributes that are defined as class attributes.
+Check out the code in  the utils module.
+
+# Possible Future Work
+- Implement a dynamic electric point source (Liénard–Wiechert potential)
+- Implement antenna&#39;s
+- Support for simple uw materials
+- Support for simple dielectric materials
+- Support reflective planes
+&#34;&#34;&#34;
+
+
+# The package is small enough to load everything unnested.
+
+from .physics import *
+from .visualize import *
+from .math import *
+from .geometry import *
+from .utils import *</code></pre>
+</details>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="jefpy.geometry" href="geometry.html">jefpy.geometry</a></code></dt>
+<dd>
+<div class="desc"><p>Convenience module for sampling purposes. Transformations to curvilinear
+coordinates are also available.</p></div>
+</dd>
+<dt><code class="name"><a title="jefpy.math" href="math.html">jefpy.math</a></code></dt>
+<dd>
+<div class="desc"><p>Set of math functions that operate explicitly on the last dimension. Assumes
+the last dimension has length 3 (x, y, z). The _keepdim functions put a
+…</p></div>
+</dd>
+<dt><code class="name"><a title="jefpy.physics" href="physics.html">jefpy.physics</a></code></dt>
+<dd>
+<div class="desc"><p>The heart of the jefpy package. All sources and their convenience containers are
+defined here.</p></div>
+</dd>
+<dt><code class="name"><a title="jefpy.utils" href="utils.html">jefpy.utils</a></code></dt>
+<dd>
+<div class="desc"><p>Collection of convenience functions.</p></div>
+</dd>
+<dt><code class="name"><a title="jefpy.visualize" href="visualize.html">jefpy.visualize</a></code></dt>
+<dd>
+<div class="desc"><p>Collection of useful visualization options for vector fields.
+Matches well with the outputs from the physics.py module.</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul>
+<li><a href="#about-jefpy">About jefpy</a></li>
+<li><a href="#how-do-i-get-set-up">How do I get set up?</a><ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li><a href="#api-documentation">API documentation</a><ul>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#main-workflow">Main workflow</a></li>
+<li><a href="#dimensions">Dimensions</a></li>
+<li><a href="#polymorphism-of-properties">Polymorphism of properties</a></li>
+<li><a href="#sourcecollection">SourceCollection</a></li>
+<li><a href="#observers">Observers</a></li>
+<li><a href="#notes">Notes</a></li>
+<li><a href="#developers">Developers</a></li>
+</ul>
+</li>
+<li><a href="#possible-future-work">Possible Future Work</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="jefpy.geometry" href="geometry.html">jefpy.geometry</a></code></li>
+<li><code><a title="jefpy.math" href="math.html">jefpy.math</a></code></li>
+<li><code><a title="jefpy.physics" href="physics.html">jefpy.physics</a></code></li>
+<li><code><a title="jefpy.utils" href="utils.html">jefpy.utils</a></code></li>
+<li><code><a title="jefpy.visualize" href="visualize.html">jefpy.visualize</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

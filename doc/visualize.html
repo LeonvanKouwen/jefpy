@@ -1,0 +1,1255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>jefpy.visualize API documentation</title>
+<meta name="description" content="Collection of useful visualization options for vector fields.
+Matches well with the outputs from the physics.py module." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>jefpy.visualize</code></h1>
+</header>
+<section id="section-intro">
+<p>Collection of useful visualization options for vector fields.
+Matches well with the outputs from the physics.py module.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34; 
+Collection of useful visualization options for vector fields.
+Matches well with the outputs from the physics.py module.
+&#34;&#34;&#34;
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from mpl_toolkits.mplot3d import axes3d
+from typing import Callable, Iterable
+from abc import ABC, abstractmethod
+from collections import deque
+import time
+
+
+
+class Movie(ABC):
+    &#34;&#34;&#34; Abstract base class for dynamic visualizations of fields. &#34;&#34;&#34;
+
+    def __init__(self, space, field):
+        &#34;&#34;&#34;
+        Creates a movie object. A fig object is created such that figure options can be
+        set after object creation by using obj.fig and obj.ax.
+        :param space: (..., 3) array, coordinate base for plotting.
+        :param field: callable, function of t that returns values to plot versus
+                      the coordinate base (space).
+        &#34;&#34;&#34;
+        self.space = space
+        self.field = field
+
+        self.fig, self.ax = plt.subplots()
+        self.fig.canvas.mpl_connect(&#39;close_event&#39;, self.close_fig)
+        self.is_closed = False
+        self.fig.tight_layout()
+        self.ax.set_xlabel(&#39;x (m)&#39;)
+        self.ax.set_ylabel(&#39;y (m)&#39;)
+        self.plot = None
+        self.range = None
+        self.title = &#34;&#34;
+
+
+    @abstractmethod
+    def snapshot(self, t):
+        &#34;&#34;&#34;
+        Method that plots data for a particular time. Should create the plotting
+        object such that it can be called independently.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        return
+
+    def snapshot_update(self, t):
+        &#34;&#34;&#34;
+        Updates the data in every frame. The difference with snapshot is that this method
+        does not need to, and should not, recreate the plotting object. For example use
+        set_data() in stead of plot(). Should be implemented if the &#39;live&#39; or &#39;record&#39; is used.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        raise NotImplementedError
+
+    def live(self, t_max=1.0e99, t0=0.0, slow_motion=1e-9, run_time=20):
+        &#34;&#34;&#34;
+        Start plotting with live dynamic updates. This is a blocking operation. Note that
+        it can&#39;t be (easily) put in a separate thread as many visualizations require to be
+        running in the main thread.
+        :param t_max: float, Efield_queue end time.
+        :param t0: float, Efield_queue start time.
+        :param slow_motion: float, amount of slowing down Efield_queue time to real time
+        :param run_time: float, amount of real time the plotting is live.
+        &#34;&#34;&#34;
+        plt.ion()
+        plt.show()
+        self.is_closed = False
+        run_time_0 = time.time()
+        t = t0
+        self.snapshot(t)
+        while t &lt; t_max and (time.time() - run_time_0) &lt; run_time:
+            t = t0 + slow_motion * (time.time() - run_time_0)
+            self.snapshot_update(t)
+            #plt.draw()
+            self.fig.canvas.draw_idle()
+            plt.pause(0.001)
+            if self.is_closed:
+                break
+        plt.close(self.fig)
+
+
+
+    def close_fig(self, evt):
+        self.is_closed = True
+
+    def record(self, filename=&#39;movie.mp4&#39;, sim_time=1e-9, slowmotion=1e-9,
+               t0=0.0, FPS=30, dpi=300):
+        &#34;&#34;&#34;
+        Save a movie to disk.
+        :param filename: str, title of movie. Other extensions that .mp4 not tested.
+        :param sim_time: float, total time for the Efield_queue to run.
+        :param slowmotion: float, conversion factor from sim time to real time.
+        :param t0: float, start of the Efield_queue.
+        :param FPS: float, frames per second.
+        :param dpi: float, movie resolution.
+        :return:
+        &#34;&#34;&#34;
+        dt = slowmotion / FPS
+        N = round(sim_time / dt)
+        t = np.linspace(t0, t0 + sim_time - dt, N)
+        self.snapshot(t0)
+
+        def frame(ti):
+            readiness = int(ti / sim_time * 100)
+            print(f&#34;Recording movie: {readiness} % ready&#34;, flush=True, end=&#34;\r&#34;)
+            self.snapshot_update(ti)
+
+        animation = FuncAnimation(self.fig, frame, frames=t, interval=1000.0/FPS)
+        animation.save(filename, dpi=dpi)
+        plt.close(self.fig)
+
+
+class MovieMap(Movie):
+
+    &#34;&#34;&#34;
+    Create dynamic visualizations of fields in a map format. A map is spatially 2D,
+    spanning a 1D heat map. The heat map is often the norm, or one component of the
+    field.
+    &#34;&#34;&#34;
+
+    def __init__(self, field):
+        &#34;&#34;&#34;
+        Object for creating movies of field maps. Initializes the fig object
+        and saves some settings. The figure options can be set after object
+        creation by using obj.fig and obj.ax. Settings passed to imshow are accesed
+        by obj.settings. Use obj.range to set the &#39;extend&#39; argument of imshow.
+        :param space: (..., 3) array, coordinate base for plotting.
+        :param field: callable, function of t that returns values to plot versus
+                      the coordinate base (space).
+        &#34;&#34;&#34;
+        super().__init__(None, field)
+        self.settings = {
+            &#39;interpolation&#39;: &#39;bilinear&#39;,
+            &#39;origin&#39;: &#39;lower&#39;,
+            &#39;cmap&#39;: &#34;RdBu&#34;}
+
+    def snapshot(self, t):
+        &#34;&#34;&#34;
+        Plots the field map for a particular time.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)
+        self.plot = plt.imshow(self.field(t).T, extent=self.range,
+                               **self.settings)
+
+    def snapshot_update(self, t):
+        &#34;&#34;&#34;
+        Updates the field map for a particular time. .snapshot should be called before.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        self.plot.set_data(self.field(t).T)
+        self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)
+
+
+
+class MovieFlux(Movie):
+    &#34;&#34;&#34; Create dynamic visualizations of 2D vector fields (quiver). &#34;&#34;&#34;
+
+    def __init__(self, space, field):
+        &#34;&#34;&#34;
+        Object for creating 2D vector field plots (quiver). Initializes the fig object
+        and saves some settings. The figure options can be set after object
+        creation by using obj.fig and obj.ax.
+        :param space: (..., 3) array, coordinate base for plotting.
+        :param field: callable, function of t that returns values to plot versus
+                      the coordinate base (space).
+        &#34;&#34;&#34;
+        super().__init__(space, field)
+        # Nothing other that the base init is executed. The init is here to
+        # give specific documentation for this derived class.
+
+
+    def snapshot(self, t):
+        &#34;&#34;&#34;
+        Plots the vector field for a particular time.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)
+        field = self.field(t)
+        Fu, Fv = field.T
+        F = np.sqrt(Fu**2 + Fv **2)
+        args = (*self.space.T, Fu / F, Fv / F)
+        self.plot = self.ax.quiver(*args)
+        plt.show()
+
+    def snapshot_update(self, t):
+        &#34;&#34;&#34;
+        Updates the vector field for a particular time. .snapshot should be called before.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        self.plot.set_UVC(*self.field(t).T)
+        self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)
+
+
+class MovieFluxEB(Movie):
+    &#34;&#34;&#34; Special version of MovieFlux that plots E and B vectors simultaneously&#34;&#34;&#34;
+
+    def __init__(self, space, E, B):
+        &#34;&#34;&#34;
+        Object for creating 2D vector field plots (quiver) of E and B simultaneously.
+        Initializes the fig object and saves some settings. The figure options can
+        be set after object creation by using obj.fig and obj.ax.
+        :param space: (..., 3) array, coordinate base for plotting.
+        :param E: callable, Electric field as function of t.
+        :param B: callable, Magnetic field as function of t.
+        &#34;&#34;&#34;
+        # passing E to the parent class is just a dummy argument as self.field is not used.
+        super().__init__(space, E)
+        self.E = E
+        self.B = B
+
+    def snapshot(self, t):
+        &#34;&#34;&#34;
+        Plots the vector fields for a particular time.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)
+        self.plot_E = self.ax.quiver(*self.space.T, *self.E(t).T, color=&#39;r&#39;)
+        self.plot_B = self.ax.quiver(*self.space.T, *self.B(t).T, color=&#39;b&#39;)
+        plt.show()
+
+    def snapshot_update(self, t):
+        &#34;&#34;&#34;
+        Updates the vector fields for a particular time. .snapshot should be called before.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        self.plot_E.set_UVC(*self.E(t).T)
+        self.plot_B.set_UVC(*self.B(t).T)
+        self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)
+
+
+
+class Movie3Axes(Movie):
+    &#34;&#34;&#34;
+    Create dynamic visualizations of observer points or sets of observer points
+    as separate lines in three different subplots. Very similiar to &#34;TimeSeries,
+    only this object is dynamically updating the graphs.
+    &#34;&#34;&#34;
+
+    def __init__(self, field, num_data_visible=100):
+        &#34;&#34;&#34;
+        Object for creating observer point curves.  Initializes the fig object
+        and saves some settings. The figure options can be set after object
+        creation by using obj.fig and obj.ax. Note that this class is space location
+        unaware.
+        :param field: callable, function of t that returns values to plot.
+        :param num_data_visible: int, maximum data point visible simultaneously in one frame.
+        &#34;&#34;&#34;
+        super().__init__(None, field)
+        plt.close(self.fig)
+        self.fig, self.ax = plt.subplots(3, 1, sharex=&#39;all&#39;)
+        self.t = deque(maxlen=num_data_visible)
+        self.lines = np.empty(field(0.0).shape, dtype=object)
+        self.field_buffer = np.empty(field(0.0).shape, dtype=object)
+        for idx, _ in np.ndenumerate(self.field_buffer):
+            self.field_buffer[idx] = deque(maxlen=num_data_visible)
+
+    def snapshot(self, t):
+        &#34;&#34;&#34;
+        Plots the field values for a particular time.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        for idx, _ in np.ndenumerate(self.field_buffer):
+            self.lines[idx], = self.ax[idx[-1]].plot(t, self.field(t)[idx])
+
+
+    def snapshot_update(self, t):
+        &#34;&#34;&#34;
+        Updates the field values for a particular time. .snapshot should be called before.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        self.t.append(t)
+        for idx, _ in np.ndenumerate(self.field_buffer):
+            self.field_buffer[idx].append(self.field(t)[idx])
+            self.lines[idx].set_data(self.t, self.field_buffer[idx])
+            self.ax[idx[-1]].relim()
+            self.ax[idx[-1]].autoscale_view(True, True, True)
+
+
+class TimeSeries:
+    &#34;&#34;&#34;
+    Plots the components of a three element vector in three subplots as a function of time.
+
+    Can be used as a function because of the __call__ interface. The advantage over just a
+    function is that various objects that may be changed are saved in this object (e.g. .fig, .ax)
+    &#34;&#34;&#34;
+
+    def __init__(self, field):
+        self.fig, self.ax = plt.subplots(3, 1, sharex=&#39;all&#39;)
+        self.field = field
+        self.lines = np.empty(field(0.0).shape, dtype=object)
+        self.ax[0].set_ylabel(&#39;x&#39;)
+        self.ax[1].set_ylabel(&#39;y&#39;)
+        self.ax[2].set_ylabel(&#39;z&#39;)
+        self.ax[2].set_xlabel(&#39;t (s)&#39;)
+
+    def __call__(self, t):
+        F = self.field(t)
+        for idx, _ in np.ndenumerate(F[0, ...]):
+            tricky_slice = tuple([slice(None)] + list(idx))
+            self.lines[idx], = self.ax[idx[-1]].plot(t, F[tricky_slice])
+
+
+def inspect_segments(segmentation, t=0):
+    &#34;&#34;&#34;
+    Plots line source_segments in 3D. Specifically tailored to the &#34;Wire&#34; class of the physics module.
+    The combination of source_segments are assumed to form a continuous curve.
+
+    :param source_segments: objectcartesian
+        .location: callable, returns a  coordinate as a function of time that describes
+                   the center location of the segment.
+        .direction: callable, returns a cartesian vector. The length of the vector is the length
+                    of the segment. The direction of the vector described the orientation of the segment.
+    :param t: float, time.
+    &#34;&#34;&#34;
+    fig = plt.figure()
+    ax = fig.gca(projection=&#39;3d&#39;)
+    ax.plot(*segmentation.T, &#39;o-&#39;)
+    plt.show()
+
+
+if __name__ == &#39;__main__&#39;:
+    pass</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="jefpy.visualize.inspect_segments"><code class="name flex">
+<span>def <span class="ident">inspect_segments</span></span>(<span>segmentation, t=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plots line source_segments in 3D. Specifically tailored to the "Wire" class of the physics module.
+The combination of source_segments are assumed to form a continuous curve.</p>
+<p>:param source_segments: objectcartesian
+.location: callable, returns a
+coordinate as a function of time that describes
+the center location of the segment.
+.direction: callable, returns a cartesian vector. The length of the vector is the length
+of the segment. The direction of the vector described the orientation of the segment.
+:param t: float, time.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def inspect_segments(segmentation, t=0):
+    &#34;&#34;&#34;
+    Plots line source_segments in 3D. Specifically tailored to the &#34;Wire&#34; class of the physics module.
+    The combination of source_segments are assumed to form a continuous curve.
+
+    :param source_segments: objectcartesian
+        .location: callable, returns a  coordinate as a function of time that describes
+                   the center location of the segment.
+        .direction: callable, returns a cartesian vector. The length of the vector is the length
+                    of the segment. The direction of the vector described the orientation of the segment.
+    :param t: float, time.
+    &#34;&#34;&#34;
+    fig = plt.figure()
+    ax = fig.gca(projection=&#39;3d&#39;)
+    ax.plot(*segmentation.T, &#39;o-&#39;)
+    plt.show()</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="jefpy.visualize.Movie"><code class="flex name class">
+<span>class <span class="ident">Movie</span></span>
+<span>(</span><span>space, field)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Abstract base class for dynamic visualizations of fields. </p>
+<p>Creates a movie object. A fig object is created such that figure options can be
+set after object creation by using obj.fig and obj.ax.
+:param space: (&hellip;, 3) array, coordinate base for plotting.
+:param field: callable, function of t that returns values to plot versus
+the coordinate base (space).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Movie(ABC):
+    &#34;&#34;&#34; Abstract base class for dynamic visualizations of fields. &#34;&#34;&#34;
+
+    def __init__(self, space, field):
+        &#34;&#34;&#34;
+        Creates a movie object. A fig object is created such that figure options can be
+        set after object creation by using obj.fig and obj.ax.
+        :param space: (..., 3) array, coordinate base for plotting.
+        :param field: callable, function of t that returns values to plot versus
+                      the coordinate base (space).
+        &#34;&#34;&#34;
+        self.space = space
+        self.field = field
+
+        self.fig, self.ax = plt.subplots()
+        self.fig.canvas.mpl_connect(&#39;close_event&#39;, self.close_fig)
+        self.is_closed = False
+        self.fig.tight_layout()
+        self.ax.set_xlabel(&#39;x (m)&#39;)
+        self.ax.set_ylabel(&#39;y (m)&#39;)
+        self.plot = None
+        self.range = None
+        self.title = &#34;&#34;
+
+
+    @abstractmethod
+    def snapshot(self, t):
+        &#34;&#34;&#34;
+        Method that plots data for a particular time. Should create the plotting
+        object such that it can be called independently.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        return
+
+    def snapshot_update(self, t):
+        &#34;&#34;&#34;
+        Updates the data in every frame. The difference with snapshot is that this method
+        does not need to, and should not, recreate the plotting object. For example use
+        set_data() in stead of plot(). Should be implemented if the &#39;live&#39; or &#39;record&#39; is used.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        raise NotImplementedError
+
+    def live(self, t_max=1.0e99, t0=0.0, slow_motion=1e-9, run_time=20):
+        &#34;&#34;&#34;
+        Start plotting with live dynamic updates. This is a blocking operation. Note that
+        it can&#39;t be (easily) put in a separate thread as many visualizations require to be
+        running in the main thread.
+        :param t_max: float, Efield_queue end time.
+        :param t0: float, Efield_queue start time.
+        :param slow_motion: float, amount of slowing down Efield_queue time to real time
+        :param run_time: float, amount of real time the plotting is live.
+        &#34;&#34;&#34;
+        plt.ion()
+        plt.show()
+        self.is_closed = False
+        run_time_0 = time.time()
+        t = t0
+        self.snapshot(t)
+        while t &lt; t_max and (time.time() - run_time_0) &lt; run_time:
+            t = t0 + slow_motion * (time.time() - run_time_0)
+            self.snapshot_update(t)
+            #plt.draw()
+            self.fig.canvas.draw_idle()
+            plt.pause(0.001)
+            if self.is_closed:
+                break
+        plt.close(self.fig)
+
+
+
+    def close_fig(self, evt):
+        self.is_closed = True
+
+    def record(self, filename=&#39;movie.mp4&#39;, sim_time=1e-9, slowmotion=1e-9,
+               t0=0.0, FPS=30, dpi=300):
+        &#34;&#34;&#34;
+        Save a movie to disk.
+        :param filename: str, title of movie. Other extensions that .mp4 not tested.
+        :param sim_time: float, total time for the Efield_queue to run.
+        :param slowmotion: float, conversion factor from sim time to real time.
+        :param t0: float, start of the Efield_queue.
+        :param FPS: float, frames per second.
+        :param dpi: float, movie resolution.
+        :return:
+        &#34;&#34;&#34;
+        dt = slowmotion / FPS
+        N = round(sim_time / dt)
+        t = np.linspace(t0, t0 + sim_time - dt, N)
+        self.snapshot(t0)
+
+        def frame(ti):
+            readiness = int(ti / sim_time * 100)
+            print(f&#34;Recording movie: {readiness} % ready&#34;, flush=True, end=&#34;\r&#34;)
+            self.snapshot_update(ti)
+
+        animation = FuncAnimation(self.fig, frame, frames=t, interval=1000.0/FPS)
+        animation.save(filename, dpi=dpi)
+        plt.close(self.fig)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>abc.ABC</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="jefpy.visualize.Movie3Axes" href="#jefpy.visualize.Movie3Axes">Movie3Axes</a></li>
+<li><a title="jefpy.visualize.MovieFlux" href="#jefpy.visualize.MovieFlux">MovieFlux</a></li>
+<li><a title="jefpy.visualize.MovieFluxEB" href="#jefpy.visualize.MovieFluxEB">MovieFluxEB</a></li>
+<li><a title="jefpy.visualize.MovieMap" href="#jefpy.visualize.MovieMap">MovieMap</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="jefpy.visualize.Movie.close_fig"><code class="name flex">
+<span>def <span class="ident">close_fig</span></span>(<span>self, evt)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close_fig(self, evt):
+    self.is_closed = True</code></pre>
+</details>
+</dd>
+<dt id="jefpy.visualize.Movie.live"><code class="name flex">
+<span>def <span class="ident">live</span></span>(<span>self, t_max=1e+99, t0=0.0, slow_motion=1e-09, run_time=20)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Start plotting with live dynamic updates. This is a blocking operation. Note that
+it can't be (easily) put in a separate thread as many visualizations require to be
+running in the main thread.
+:param t_max: float, Efield_queue end time.
+:param t0: float, Efield_queue start time.
+:param slow_motion: float, amount of slowing down Efield_queue time to real time
+:param run_time: float, amount of real time the plotting is live.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def live(self, t_max=1.0e99, t0=0.0, slow_motion=1e-9, run_time=20):
+    &#34;&#34;&#34;
+    Start plotting with live dynamic updates. This is a blocking operation. Note that
+    it can&#39;t be (easily) put in a separate thread as many visualizations require to be
+    running in the main thread.
+    :param t_max: float, Efield_queue end time.
+    :param t0: float, Efield_queue start time.
+    :param slow_motion: float, amount of slowing down Efield_queue time to real time
+    :param run_time: float, amount of real time the plotting is live.
+    &#34;&#34;&#34;
+    plt.ion()
+    plt.show()
+    self.is_closed = False
+    run_time_0 = time.time()
+    t = t0
+    self.snapshot(t)
+    while t &lt; t_max and (time.time() - run_time_0) &lt; run_time:
+        t = t0 + slow_motion * (time.time() - run_time_0)
+        self.snapshot_update(t)
+        #plt.draw()
+        self.fig.canvas.draw_idle()
+        plt.pause(0.001)
+        if self.is_closed:
+            break
+    plt.close(self.fig)</code></pre>
+</details>
+</dd>
+<dt id="jefpy.visualize.Movie.record"><code class="name flex">
+<span>def <span class="ident">record</span></span>(<span>self, filename='movie.mp4', sim_time=1e-09, slowmotion=1e-09, t0=0.0, FPS=30, dpi=300)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Save a movie to disk.
+:param filename: str, title of movie. Other extensions that .mp4 not tested.
+:param sim_time: float, total time for the Efield_queue to run.
+:param slowmotion: float, conversion factor from sim time to real time.
+:param t0: float, start of the Efield_queue.
+:param FPS: float, frames per second.
+:param dpi: float, movie resolution.
+:return:</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def record(self, filename=&#39;movie.mp4&#39;, sim_time=1e-9, slowmotion=1e-9,
+           t0=0.0, FPS=30, dpi=300):
+    &#34;&#34;&#34;
+    Save a movie to disk.
+    :param filename: str, title of movie. Other extensions that .mp4 not tested.
+    :param sim_time: float, total time for the Efield_queue to run.
+    :param slowmotion: float, conversion factor from sim time to real time.
+    :param t0: float, start of the Efield_queue.
+    :param FPS: float, frames per second.
+    :param dpi: float, movie resolution.
+    :return:
+    &#34;&#34;&#34;
+    dt = slowmotion / FPS
+    N = round(sim_time / dt)
+    t = np.linspace(t0, t0 + sim_time - dt, N)
+    self.snapshot(t0)
+
+    def frame(ti):
+        readiness = int(ti / sim_time * 100)
+        print(f&#34;Recording movie: {readiness} % ready&#34;, flush=True, end=&#34;\r&#34;)
+        self.snapshot_update(ti)
+
+    animation = FuncAnimation(self.fig, frame, frames=t, interval=1000.0/FPS)
+    animation.save(filename, dpi=dpi)
+    plt.close(self.fig)</code></pre>
+</details>
+</dd>
+<dt id="jefpy.visualize.Movie.snapshot"><code class="name flex">
+<span>def <span class="ident">snapshot</span></span>(<span>self, t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method that plots data for a particular time. Should create the plotting
+object such that it can be called independently.
+:param t: float, time.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abstractmethod
+def snapshot(self, t):
+    &#34;&#34;&#34;
+    Method that plots data for a particular time. Should create the plotting
+    object such that it can be called independently.
+    :param t: float, time.
+    &#34;&#34;&#34;
+    return</code></pre>
+</details>
+</dd>
+<dt id="jefpy.visualize.Movie.snapshot_update"><code class="name flex">
+<span>def <span class="ident">snapshot_update</span></span>(<span>self, t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updates the data in every frame. The difference with snapshot is that this method
+does not need to, and should not, recreate the plotting object. For example use
+set_data() in stead of plot(). Should be implemented if the 'live' or 'record' is used.
+:param t: float, time.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def snapshot_update(self, t):
+    &#34;&#34;&#34;
+    Updates the data in every frame. The difference with snapshot is that this method
+    does not need to, and should not, recreate the plotting object. For example use
+    set_data() in stead of plot(). Should be implemented if the &#39;live&#39; or &#39;record&#39; is used.
+    :param t: float, time.
+    &#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="jefpy.visualize.Movie3Axes"><code class="flex name class">
+<span>class <span class="ident">Movie3Axes</span></span>
+<span>(</span><span>field, num_data_visible=100)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create dynamic visualizations of observer points or sets of observer points
+as separate lines in three different subplots. Very similiar to "TimeSeries,
+only this object is dynamically updating the graphs.</p>
+<p>Object for creating observer point curves.
+Initializes the fig object
+and saves some settings. The figure options can be set after object
+creation by using obj.fig and obj.ax. Note that this class is space location
+unaware.
+:param field: callable, function of t that returns values to plot.
+:param num_data_visible: int, maximum data point visible simultaneously in one frame.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Movie3Axes(Movie):
+    &#34;&#34;&#34;
+    Create dynamic visualizations of observer points or sets of observer points
+    as separate lines in three different subplots. Very similiar to &#34;TimeSeries,
+    only this object is dynamically updating the graphs.
+    &#34;&#34;&#34;
+
+    def __init__(self, field, num_data_visible=100):
+        &#34;&#34;&#34;
+        Object for creating observer point curves.  Initializes the fig object
+        and saves some settings. The figure options can be set after object
+        creation by using obj.fig and obj.ax. Note that this class is space location
+        unaware.
+        :param field: callable, function of t that returns values to plot.
+        :param num_data_visible: int, maximum data point visible simultaneously in one frame.
+        &#34;&#34;&#34;
+        super().__init__(None, field)
+        plt.close(self.fig)
+        self.fig, self.ax = plt.subplots(3, 1, sharex=&#39;all&#39;)
+        self.t = deque(maxlen=num_data_visible)
+        self.lines = np.empty(field(0.0).shape, dtype=object)
+        self.field_buffer = np.empty(field(0.0).shape, dtype=object)
+        for idx, _ in np.ndenumerate(self.field_buffer):
+            self.field_buffer[idx] = deque(maxlen=num_data_visible)
+
+    def snapshot(self, t):
+        &#34;&#34;&#34;
+        Plots the field values for a particular time.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        for idx, _ in np.ndenumerate(self.field_buffer):
+            self.lines[idx], = self.ax[idx[-1]].plot(t, self.field(t)[idx])
+
+
+    def snapshot_update(self, t):
+        &#34;&#34;&#34;
+        Updates the field values for a particular time. .snapshot should be called before.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        self.t.append(t)
+        for idx, _ in np.ndenumerate(self.field_buffer):
+            self.field_buffer[idx].append(self.field(t)[idx])
+            self.lines[idx].set_data(self.t, self.field_buffer[idx])
+            self.ax[idx[-1]].relim()
+            self.ax[idx[-1]].autoscale_view(True, True, True)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="jefpy.visualize.Movie" href="#jefpy.visualize.Movie">Movie</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="jefpy.visualize.Movie3Axes.snapshot"><code class="name flex">
+<span>def <span class="ident">snapshot</span></span>(<span>self, t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plots the field values for a particular time.
+:param t: float, time.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def snapshot(self, t):
+    &#34;&#34;&#34;
+    Plots the field values for a particular time.
+    :param t: float, time.
+    &#34;&#34;&#34;
+    for idx, _ in np.ndenumerate(self.field_buffer):
+        self.lines[idx], = self.ax[idx[-1]].plot(t, self.field(t)[idx])</code></pre>
+</details>
+</dd>
+<dt id="jefpy.visualize.Movie3Axes.snapshot_update"><code class="name flex">
+<span>def <span class="ident">snapshot_update</span></span>(<span>self, t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updates the field values for a particular time. .snapshot should be called before.
+:param t: float, time.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def snapshot_update(self, t):
+    &#34;&#34;&#34;
+    Updates the field values for a particular time. .snapshot should be called before.
+    :param t: float, time.
+    &#34;&#34;&#34;
+    self.t.append(t)
+    for idx, _ in np.ndenumerate(self.field_buffer):
+        self.field_buffer[idx].append(self.field(t)[idx])
+        self.lines[idx].set_data(self.t, self.field_buffer[idx])
+        self.ax[idx[-1]].relim()
+        self.ax[idx[-1]].autoscale_view(True, True, True)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="jefpy.visualize.Movie" href="#jefpy.visualize.Movie">Movie</a></b></code>:
+<ul class="hlist">
+<li><code><a title="jefpy.visualize.Movie.live" href="#jefpy.visualize.Movie.live">live</a></code></li>
+<li><code><a title="jefpy.visualize.Movie.record" href="#jefpy.visualize.Movie.record">record</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="jefpy.visualize.MovieFlux"><code class="flex name class">
+<span>class <span class="ident">MovieFlux</span></span>
+<span>(</span><span>space, field)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create dynamic visualizations of 2D vector fields (quiver). </p>
+<p>Object for creating 2D vector field plots (quiver). Initializes the fig object
+and saves some settings. The figure options can be set after object
+creation by using obj.fig and obj.ax.
+:param space: (&hellip;, 3) array, coordinate base for plotting.
+:param field: callable, function of t that returns values to plot versus
+the coordinate base (space).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MovieFlux(Movie):
+    &#34;&#34;&#34; Create dynamic visualizations of 2D vector fields (quiver). &#34;&#34;&#34;
+
+    def __init__(self, space, field):
+        &#34;&#34;&#34;
+        Object for creating 2D vector field plots (quiver). Initializes the fig object
+        and saves some settings. The figure options can be set after object
+        creation by using obj.fig and obj.ax.
+        :param space: (..., 3) array, coordinate base for plotting.
+        :param field: callable, function of t that returns values to plot versus
+                      the coordinate base (space).
+        &#34;&#34;&#34;
+        super().__init__(space, field)
+        # Nothing other that the base init is executed. The init is here to
+        # give specific documentation for this derived class.
+
+
+    def snapshot(self, t):
+        &#34;&#34;&#34;
+        Plots the vector field for a particular time.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)
+        field = self.field(t)
+        Fu, Fv = field.T
+        F = np.sqrt(Fu**2 + Fv **2)
+        args = (*self.space.T, Fu / F, Fv / F)
+        self.plot = self.ax.quiver(*args)
+        plt.show()
+
+    def snapshot_update(self, t):
+        &#34;&#34;&#34;
+        Updates the vector field for a particular time. .snapshot should be called before.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        self.plot.set_UVC(*self.field(t).T)
+        self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="jefpy.visualize.Movie" href="#jefpy.visualize.Movie">Movie</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="jefpy.visualize.MovieFlux.snapshot"><code class="name flex">
+<span>def <span class="ident">snapshot</span></span>(<span>self, t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plots the vector field for a particular time.
+:param t: float, time.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def snapshot(self, t):
+    &#34;&#34;&#34;
+    Plots the vector field for a particular time.
+    :param t: float, time.
+    &#34;&#34;&#34;
+    self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)
+    field = self.field(t)
+    Fu, Fv = field.T
+    F = np.sqrt(Fu**2 + Fv **2)
+    args = (*self.space.T, Fu / F, Fv / F)
+    self.plot = self.ax.quiver(*args)
+    plt.show()</code></pre>
+</details>
+</dd>
+<dt id="jefpy.visualize.MovieFlux.snapshot_update"><code class="name flex">
+<span>def <span class="ident">snapshot_update</span></span>(<span>self, t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updates the vector field for a particular time. .snapshot should be called before.
+:param t: float, time.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def snapshot_update(self, t):
+    &#34;&#34;&#34;
+    Updates the vector field for a particular time. .snapshot should be called before.
+    :param t: float, time.
+    &#34;&#34;&#34;
+    self.plot.set_UVC(*self.field(t).T)
+    self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="jefpy.visualize.Movie" href="#jefpy.visualize.Movie">Movie</a></b></code>:
+<ul class="hlist">
+<li><code><a title="jefpy.visualize.Movie.live" href="#jefpy.visualize.Movie.live">live</a></code></li>
+<li><code><a title="jefpy.visualize.Movie.record" href="#jefpy.visualize.Movie.record">record</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="jefpy.visualize.MovieFluxEB"><code class="flex name class">
+<span>class <span class="ident">MovieFluxEB</span></span>
+<span>(</span><span>space, E, B)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Special version of MovieFlux that plots E and B vectors simultaneously</p>
+<p>Object for creating 2D vector field plots (quiver) of E and B simultaneously.
+Initializes the fig object and saves some settings. The figure options can
+be set after object creation by using obj.fig and obj.ax.
+:param space: (&hellip;, 3) array, coordinate base for plotting.
+:param E: callable, Electric field as function of t.
+:param B: callable, Magnetic field as function of t.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MovieFluxEB(Movie):
+    &#34;&#34;&#34; Special version of MovieFlux that plots E and B vectors simultaneously&#34;&#34;&#34;
+
+    def __init__(self, space, E, B):
+        &#34;&#34;&#34;
+        Object for creating 2D vector field plots (quiver) of E and B simultaneously.
+        Initializes the fig object and saves some settings. The figure options can
+        be set after object creation by using obj.fig and obj.ax.
+        :param space: (..., 3) array, coordinate base for plotting.
+        :param E: callable, Electric field as function of t.
+        :param B: callable, Magnetic field as function of t.
+        &#34;&#34;&#34;
+        # passing E to the parent class is just a dummy argument as self.field is not used.
+        super().__init__(space, E)
+        self.E = E
+        self.B = B
+
+    def snapshot(self, t):
+        &#34;&#34;&#34;
+        Plots the vector fields for a particular time.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)
+        self.plot_E = self.ax.quiver(*self.space.T, *self.E(t).T, color=&#39;r&#39;)
+        self.plot_B = self.ax.quiver(*self.space.T, *self.B(t).T, color=&#39;b&#39;)
+        plt.show()
+
+    def snapshot_update(self, t):
+        &#34;&#34;&#34;
+        Updates the vector fields for a particular time. .snapshot should be called before.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        self.plot_E.set_UVC(*self.E(t).T)
+        self.plot_B.set_UVC(*self.B(t).T)
+        self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="jefpy.visualize.Movie" href="#jefpy.visualize.Movie">Movie</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="jefpy.visualize.MovieFluxEB.snapshot"><code class="name flex">
+<span>def <span class="ident">snapshot</span></span>(<span>self, t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plots the vector fields for a particular time.
+:param t: float, time.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def snapshot(self, t):
+    &#34;&#34;&#34;
+    Plots the vector fields for a particular time.
+    :param t: float, time.
+    &#34;&#34;&#34;
+    self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)
+    self.plot_E = self.ax.quiver(*self.space.T, *self.E(t).T, color=&#39;r&#39;)
+    self.plot_B = self.ax.quiver(*self.space.T, *self.B(t).T, color=&#39;b&#39;)
+    plt.show()</code></pre>
+</details>
+</dd>
+<dt id="jefpy.visualize.MovieFluxEB.snapshot_update"><code class="name flex">
+<span>def <span class="ident">snapshot_update</span></span>(<span>self, t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updates the vector fields for a particular time. .snapshot should be called before.
+:param t: float, time.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def snapshot_update(self, t):
+    &#34;&#34;&#34;
+    Updates the vector fields for a particular time. .snapshot should be called before.
+    :param t: float, time.
+    &#34;&#34;&#34;
+    self.plot_E.set_UVC(*self.E(t).T)
+    self.plot_B.set_UVC(*self.B(t).T)
+    self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="jefpy.visualize.Movie" href="#jefpy.visualize.Movie">Movie</a></b></code>:
+<ul class="hlist">
+<li><code><a title="jefpy.visualize.Movie.live" href="#jefpy.visualize.Movie.live">live</a></code></li>
+<li><code><a title="jefpy.visualize.Movie.record" href="#jefpy.visualize.Movie.record">record</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="jefpy.visualize.MovieMap"><code class="flex name class">
+<span>class <span class="ident">MovieMap</span></span>
+<span>(</span><span>field)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create dynamic visualizations of fields in a map format. A map is spatially 2D,
+spanning a 1D heat map. The heat map is often the norm, or one component of the
+field.</p>
+<p>Object for creating movies of field maps. Initializes the fig object
+and saves some settings. The figure options can be set after object
+creation by using obj.fig and obj.ax. Settings passed to imshow are accesed
+by obj.settings. Use obj.range to set the 'extend' argument of imshow.
+:param space: (&hellip;, 3) array, coordinate base for plotting.
+:param field: callable, function of t that returns values to plot versus
+the coordinate base (space).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MovieMap(Movie):
+
+    &#34;&#34;&#34;
+    Create dynamic visualizations of fields in a map format. A map is spatially 2D,
+    spanning a 1D heat map. The heat map is often the norm, or one component of the
+    field.
+    &#34;&#34;&#34;
+
+    def __init__(self, field):
+        &#34;&#34;&#34;
+        Object for creating movies of field maps. Initializes the fig object
+        and saves some settings. The figure options can be set after object
+        creation by using obj.fig and obj.ax. Settings passed to imshow are accesed
+        by obj.settings. Use obj.range to set the &#39;extend&#39; argument of imshow.
+        :param space: (..., 3) array, coordinate base for plotting.
+        :param field: callable, function of t that returns values to plot versus
+                      the coordinate base (space).
+        &#34;&#34;&#34;
+        super().__init__(None, field)
+        self.settings = {
+            &#39;interpolation&#39;: &#39;bilinear&#39;,
+            &#39;origin&#39;: &#39;lower&#39;,
+            &#39;cmap&#39;: &#34;RdBu&#34;}
+
+    def snapshot(self, t):
+        &#34;&#34;&#34;
+        Plots the field map for a particular time.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)
+        self.plot = plt.imshow(self.field(t).T, extent=self.range,
+                               **self.settings)
+
+    def snapshot_update(self, t):
+        &#34;&#34;&#34;
+        Updates the field map for a particular time. .snapshot should be called before.
+        :param t: float, time.
+        &#34;&#34;&#34;
+        self.plot.set_data(self.field(t).T)
+        self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="jefpy.visualize.Movie" href="#jefpy.visualize.Movie">Movie</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="jefpy.visualize.MovieMap.snapshot"><code class="name flex">
+<span>def <span class="ident">snapshot</span></span>(<span>self, t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plots the field map for a particular time.
+:param t: float, time.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def snapshot(self, t):
+    &#34;&#34;&#34;
+    Plots the field map for a particular time.
+    :param t: float, time.
+    &#34;&#34;&#34;
+    self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)
+    self.plot = plt.imshow(self.field(t).T, extent=self.range,
+                           **self.settings)</code></pre>
+</details>
+</dd>
+<dt id="jefpy.visualize.MovieMap.snapshot_update"><code class="name flex">
+<span>def <span class="ident">snapshot_update</span></span>(<span>self, t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Updates the field map for a particular time. .snapshot should be called before.
+:param t: float, time.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def snapshot_update(self, t):
+    &#34;&#34;&#34;
+    Updates the field map for a particular time. .snapshot should be called before.
+    :param t: float, time.
+    &#34;&#34;&#34;
+    self.plot.set_data(self.field(t).T)
+    self.ax.set_title(f&#34;{self.title}  t={t:.2e} s&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="jefpy.visualize.Movie" href="#jefpy.visualize.Movie">Movie</a></b></code>:
+<ul class="hlist">
+<li><code><a title="jefpy.visualize.Movie.live" href="#jefpy.visualize.Movie.live">live</a></code></li>
+<li><code><a title="jefpy.visualize.Movie.record" href="#jefpy.visualize.Movie.record">record</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="jefpy.visualize.TimeSeries"><code class="flex name class">
+<span>class <span class="ident">TimeSeries</span></span>
+<span>(</span><span>field)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Plots the components of a three element vector in three subplots as a function of time.</p>
+<p>Can be used as a function because of the <strong>call</strong> interface. The advantage over just a
+function is that various objects that may be changed are saved in this object (e.g. .fig, .ax)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TimeSeries:
+    &#34;&#34;&#34;
+    Plots the components of a three element vector in three subplots as a function of time.
+
+    Can be used as a function because of the __call__ interface. The advantage over just a
+    function is that various objects that may be changed are saved in this object (e.g. .fig, .ax)
+    &#34;&#34;&#34;
+
+    def __init__(self, field):
+        self.fig, self.ax = plt.subplots(3, 1, sharex=&#39;all&#39;)
+        self.field = field
+        self.lines = np.empty(field(0.0).shape, dtype=object)
+        self.ax[0].set_ylabel(&#39;x&#39;)
+        self.ax[1].set_ylabel(&#39;y&#39;)
+        self.ax[2].set_ylabel(&#39;z&#39;)
+        self.ax[2].set_xlabel(&#39;t (s)&#39;)
+
+    def __call__(self, t):
+        F = self.field(t)
+        for idx, _ in np.ndenumerate(F[0, ...]):
+            tricky_slice = tuple([slice(None)] + list(idx))
+            self.lines[idx], = self.ax[idx[-1]].plot(t, F[tricky_slice])</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="jefpy" href="index.html">jefpy</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="jefpy.visualize.inspect_segments" href="#jefpy.visualize.inspect_segments">inspect_segments</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="jefpy.visualize.Movie" href="#jefpy.visualize.Movie">Movie</a></code></h4>
+<ul class="">
+<li><code><a title="jefpy.visualize.Movie.close_fig" href="#jefpy.visualize.Movie.close_fig">close_fig</a></code></li>
+<li><code><a title="jefpy.visualize.Movie.live" href="#jefpy.visualize.Movie.live">live</a></code></li>
+<li><code><a title="jefpy.visualize.Movie.record" href="#jefpy.visualize.Movie.record">record</a></code></li>
+<li><code><a title="jefpy.visualize.Movie.snapshot" href="#jefpy.visualize.Movie.snapshot">snapshot</a></code></li>
+<li><code><a title="jefpy.visualize.Movie.snapshot_update" href="#jefpy.visualize.Movie.snapshot_update">snapshot_update</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="jefpy.visualize.Movie3Axes" href="#jefpy.visualize.Movie3Axes">Movie3Axes</a></code></h4>
+<ul class="">
+<li><code><a title="jefpy.visualize.Movie3Axes.snapshot" href="#jefpy.visualize.Movie3Axes.snapshot">snapshot</a></code></li>
+<li><code><a title="jefpy.visualize.Movie3Axes.snapshot_update" href="#jefpy.visualize.Movie3Axes.snapshot_update">snapshot_update</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="jefpy.visualize.MovieFlux" href="#jefpy.visualize.MovieFlux">MovieFlux</a></code></h4>
+<ul class="">
+<li><code><a title="jefpy.visualize.MovieFlux.snapshot" href="#jefpy.visualize.MovieFlux.snapshot">snapshot</a></code></li>
+<li><code><a title="jefpy.visualize.MovieFlux.snapshot_update" href="#jefpy.visualize.MovieFlux.snapshot_update">snapshot_update</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="jefpy.visualize.MovieFluxEB" href="#jefpy.visualize.MovieFluxEB">MovieFluxEB</a></code></h4>
+<ul class="">
+<li><code><a title="jefpy.visualize.MovieFluxEB.snapshot" href="#jefpy.visualize.MovieFluxEB.snapshot">snapshot</a></code></li>
+<li><code><a title="jefpy.visualize.MovieFluxEB.snapshot_update" href="#jefpy.visualize.MovieFluxEB.snapshot_update">snapshot_update</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="jefpy.visualize.MovieMap" href="#jefpy.visualize.MovieMap">MovieMap</a></code></h4>
+<ul class="">
+<li><code><a title="jefpy.visualize.MovieMap.snapshot" href="#jefpy.visualize.MovieMap.snapshot">snapshot</a></code></li>
+<li><code><a title="jefpy.visualize.MovieMap.snapshot_update" href="#jefpy.visualize.MovieMap.snapshot_update">snapshot_update</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="jefpy.visualize.TimeSeries" href="#jefpy.visualize.TimeSeries">TimeSeries</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

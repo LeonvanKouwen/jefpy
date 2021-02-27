@@ -1,0 +1,2553 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>jefpy.physics API documentation</title>
+<meta name="description" content="The heart of the jefpy package. All sources and their convenience containers are
+defined here." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>jefpy.physics</code></h1>
+</header>
+<section id="section-intro">
+<p>The heart of the jefpy package. All sources and their convenience containers are
+defined here.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+The heart of the jefpy package. All sources and their convenience containers are
+defined here.
+&#34;&#34;&#34;
+
+from abc import ABC, abstractmethod
+import numpy as np
+import uuid
+from collections import OrderedDict
+from dataclasses import dataclass
+
+from jefpy.math import HarmonicOscillator
+from jefpy.math import cross, norm, dot_keepdim, norm_keepdim, norm_keepshape, vec_split
+from jefpy.utils import broadcast_spacetime, default, match_shape, JProperty
+
+
+@dataclass(init=False)
+class Constants:
+    C: float = 299792458
+    EPS_0: float = 8.8541878128e-12
+    MU_0: float = 1.25663706212e-6
+    K_e: float = 1 / (4 * np.pi * EPS_0)
+    K_u: float = MU_0 / (4 * np.pi)
+
+
+class Source(ABC):
+    &#34;&#34;&#34;
+    Template for any source. If a source is only uw or electric,
+    an array of zeros should be returned for the non-existent field.
+    Allowed types of r, t depends on the implementation. See main documentation.
+
+    Note about the common arguments r, t:
+    r: (..., 3): position(s) of observer anywhere in the shared spacetime frame.
+    t: float or (..., 1): time of the observation in shared spacetime frame.
+    &#34;&#34;&#34;
+
+    def E(self, r, t=.0):
+        &#34;&#34;&#34; Returns the electric field at location r at time t. &#34;&#34;&#34;
+        raise NotImplementedError
+
+    def B(self, r, t=.0):
+        &#34;&#34;&#34; Returns the uw field at location r at time t. &#34;&#34;&#34;
+        raise NotImplementedError
+
+    @broadcast_spacetime
+    def S(self, r, t=.0):
+        &#34;&#34;&#34; Returns the Poynting vector at location r at time t. &#34;&#34;&#34;
+        return 1.0 / Constants.MU_0 * cross(self.E(r, t), self.B(r, t))
+
+    def __add__(self, addition):
+        if isinstance(addition, Source):
+            return SourceCollection((self, addition))
+        elif isinstance(addition, SourceCollection):
+            addition[str(uuid.uuid4())] = self
+            return addition
+
+class SourceCollection(OrderedDict):
+    &#34;&#34;&#34;
+    Special dictionary of source objects. Besides regular dictionary
+    operations, the methods E, B and S are available, which give
+    the summed fields of all sources.
+
+    Can be nested with SourceCollections. This is very useful when
+    making groups of sources.
+
+    A note on inheritance from dict, which is sometimes frowned upon.
+    Because the standard mechanisms such as __get__ and __set__ are
+    not mingled with here, so for this purpose it is alright imho.
+    &#34;&#34;&#34;
+
+    def __init__(self, sources=None, observable=&#39;uvw&#39;, transform=None):
+        &#34;&#34;&#34;
+        sources: a Source object or a collection of Source objects.
+        observable: str / tuple / int
+            Applies a tunable observation to the field.
+            Options are &#39;uvw&#39;, &#39;norm&#39;, &#39;uv&#39;, &#39;uw&#39;, &#39;vw&#39;, or a tuple specifying
+            which spatial dimension need to be taken, or an int representing one
+            single dimension. Note that without transformation, uvw = xyz. However
+            with transformation, uvw represent the new coordinate system dimensions.
+        transform: callback
+            Coordinate system transformation to apply to the vector field.
+        &#34;&#34;&#34;
+        if sources is None:
+            sources = {}
+        elif isinstance(sources, (list, tuple, set)):
+            sources = {uuid.uuid4(): source for source in sources}
+        elif isinstance(sources, Source):
+            sources = {uuid.uuid4(): sources}
+        super().__init__(sources)
+
+        self.observable = observable
+        self.transform = transform or (lambda r, F: F)
+
+    def _sum(self, r, t, field_type, transform=None, observable=None):
+        &#34;&#34;&#34;
+        Returns the field of all sources combined (superposition) at location                      
+        r at time t. 
+        field_type: str, &#39;E&#39;, &#39;B&#39;, &#39;S&#39;
+        &#34;&#34;&#34;
+        F = np.zeros_like(r)
+        for source in self.values():
+            if isinstance(source, Source):
+                F = F + getattr(source, field_type)(r, t)
+            else:
+                F = F + source._sum(r, t, field_type)
+
+        # It is possible to overwrite the default output manipulations.
+        transform = default(transform, self.transform)
+        observable = default(observable, self.observable)
+
+        F = transform(r, F)
+        F = self._observe(F, observable=observable)
+        return F
+
+    @broadcast_spacetime
+    def E(self, r, t=.0, transform=None, observable=None):
+        &#34;&#34;&#34; Returns the electric field at location r at time t. &#34;&#34;&#34;
+        return self._sum(r, t, &#39;E&#39;, transform=transform, observable=observable)
+
+    @broadcast_spacetime
+    def B(self, r, t=.0, transform=None, observable=None):
+        &#34;&#34;&#34; Returns the uw field at location r at time t. &#34;&#34;&#34;
+        return self._sum(r, t, &#39;B&#39;, transform=transform, observable=observable)
+
+    @broadcast_spacetime
+    def S(self, r, t=.0, transform=None, observable=None):
+        &#34;&#34;&#34; Returns the Poynting vector field at location r at time t. &#34;&#34;&#34;
+        return self._sum(r, t, &#39;S&#39;, transform=transform, observable=observable)
+
+    @staticmethod
+    def _observe(F, observable=&#39;uvw&#39;):
+        if observable == &#39;uvw&#39;:
+            return F
+        elif observable == &#39;norm&#39;:
+            return norm(F)
+        elif observable == &#39;uv&#39;:
+            return F[..., (0, 1)]
+        elif observable == &#39;uw&#39;:
+            return F[..., (0, 2)]
+        elif observable == &#39;vw&#39;:
+            return F[..., (1, 2)]
+        elif type(observable) in (tuple, int):
+            return F[..., observable]
+        else:
+            raise ValueError(observable, &#34; is not a valid observable.&#34;)
+
+    def get_source_attributes(self, attribute, as_array=True):
+        #TODO, add denesting function?
+        attributes = {}
+        for key, source in self.items():
+            if isinstance(source, Source):
+                attributes[key] = getattr(source, attribute)
+            else:
+                attributes[key] = source.get_source_attributes(attribute, as_array=as_array)
+        if as_array:
+            try:
+                # Assume that attr is a JProperty and thus callable.
+                return np.array([attr() for attr in attributes.values()])
+            except KeyError:
+                return np.array(attributes.values())
+        else:
+            return attributes
+
+    def get_locations_array(self):
+        #BACKWARD COMPATABILITY, REMOVE AT SOME POINT
+        return self.get_source_attributes(&#34;location&#34;)
+
+    def __add__(self, addition):
+        if isinstance(addition, Source):
+            self[uuid.uuid4()] = addition
+        elif isinstance(addition, SourceCollection):
+            self.update(addition)
+        return self
+
+    def update(self, addition, **kwargs):
+        if isinstance(addition, (list, tuple)):
+            addition = {uuid.uuid4(): value for value in addition}
+        super().update(addition)
+
+
+class PointSource(Source):
+    &#34;&#34;&#34;
+    Base class for most sources. Assumes the location is one point in space.
+    The location can be set by an array or by a callable returning an array
+    such that the source can move through space.
+
+    Retarded coordinates are used. This means that for implementation
+    of a source it be assumed to be in the origin. The retarded coordinates are:
+    R: (..., 3): vector from source to observer.
+    tau: float or (..., 1): retarded time at observer.
+    &#34;&#34;&#34;
+
+    location = JProperty((0, 0, 0))
+    cut_off = JProperty(1e-12)
+
+    def __init__(self, location=None, cut_off=None):
+        self.location = location
+        self.cut_off = cut_off
+        #super().__init__()
+
+    @broadcast_spacetime
+    def E(self, r, t=.0):
+        &#34;&#34;&#34; Returns the electric field at location r at time t. &#34;&#34;&#34;
+        return self.E_retarded_coordinates(*self.retarded_coordinates(r, t))
+
+    @broadcast_spacetime
+    def B(self, r, t=.0):
+        &#34;&#34;&#34; Returns the uw field at location r at time t. &#34;&#34;&#34;
+        return self.B_retarded_coordinates(*self.retarded_coordinates(r, t))
+
+    @broadcast_spacetime
+    def V(self, r, t=.0):
+        &#34;&#34;&#34; Returns the electrostatic potential at location r at time t.&#34;&#34;&#34;
+        return self.V_retarded_coordinates(*self.retarded_coordinates(r, t))
+
+    def E_retarded_coordinates(self, R, tau):
+        &#34;&#34;&#34; Computes the electrostatic potential from retarded coordinates. &#34;&#34;&#34;
+        raise NotImplementedError
+
+    def B_retarded_coordinates(self, R, tau):
+        &#34;&#34;&#34; Computes the electrostatic potential from retarded coordinates. &#34;&#34;&#34;
+        raise NotImplementedError
+
+    def V_retarded_coordinates(self, R, tau):
+        &#34;&#34;&#34; Computes the electrostatic potential from retarded coordinates. &#34;&#34;&#34;
+        raise NotImplementedError
+
+    def retarded_coordinates(self, r, t):
+        &#34;&#34;&#34; Creates the retarded coordinates at the requested space-time locations. &#34;&#34;&#34;
+        R = np.array(r) - self.location(t)
+        tau = t - norm_keepdim(R) / Constants.C
+        # Mind the broadcasting of various dimensionalities.
+        # Introduces nan&#39;s for retarded coordinates too close to the source.
+        R[norm_keepshape(R) &lt; self.cut_off(t)] = np.nan
+        return R, tau
+
+
+class ElectricDipole(PointSource):
+    &#34;&#34;&#34; Infinitely small electric dipole.&#34;&#34;&#34;
+
+    p = JProperty(np.zeros(3))
+    dp_dt = JProperty(np.zeros(3))
+    d2p_dt2 = JProperty(np.zeros(3))
+
+    def __init__(self, p=None, dp_dt=None, d2p_dt2=None, **kwargs):
+        &#34;&#34;&#34;
+        :param location: callable that returns a 3-array, or a 3-array. Sets
+                         the (dynamic) location of the source.
+        :param p: callable, function of t returning the dipole moment.
+        :param dp_dt: callable, function of returning the derivative of the
+                     dipole moment.
+        :param d2p_dt2: callable, function of t returning the second
+                       derivative of the dipole moment.
+        :param cut_off: float, exclusion distance around the source location.
+        &#34;&#34;&#34;
+        super().__init__(**kwargs)
+        self.p = p
+        self.dp_dt = dp_dt
+        self.d2p_dt2 = d2p_dt2
+
+    @classmethod
+    def oscillator(cls, power=1.0, freq=1e9, orientation=(0, 0, 1), phase=0.0, **kwargs):
+        &#34;&#34;&#34;
+        Harmonically oscillating electric dipole.
+        :param location: callable that returns a 3-array, or a 3-array. Sets
+                         the (dynamic) location of the source.
+        :param power: float, total irradiated power.
+        :param freq: float, frequency
+        :param orientation: 3-array, direction of the dipole moment.
+                            Magnitude is ignored.
+        :param phase: float
+        :param cut_off: float, distance to source that returns nan.
+        :return:
+        &#34;&#34;&#34;
+
+        # TODO: Consider making these properties all quasi-static
+        orientation = np.array(orientation) / norm(np.array(orientation))
+        p0 = (np.array(orientation)
+              * np.sqrt(power * 12 * np.pi * Constants.C / Constants.MU_0) /
+              (freq * 2 * np.pi) ** 2)
+        osc = HarmonicOscillator(amplitude=p0, freq=freq, phase=phase)
+        return cls(p=osc.f, dp_dt=osc.df_dt, d2p_dt2=osc.d2f_dt2, **kwargs)
+
+    def E_retarded_coordinates(self, R, tau):
+        &#34;&#34;&#34; Computes the electric field from retarded coordinates. &#34;&#34;&#34;
+        R_norm, R_unit = vec_split(R)
+        p = self.p(tau)
+        dp_dt = self.dp_dt(tau)
+        d2p_dt2 = self.d2p_dt2(tau)
+        near1 = Constants.C * (3 * dot_keepdim(R_unit, p) * R_unit - p) / R_norm ** 3
+        near2 = (3 * dot_keepdim(R_unit, dp_dt) * R_unit - dp_dt) / R_norm ** 2
+        far = (cross(R_unit, cross(R_unit, d2p_dt2)) / (Constants.C * R_norm))
+        return Constants.K_e / Constants.C * (near1 + near2 + far)
+
+    def B_retarded_coordinates(self, R, tau):
+        &#34;&#34;&#34; Computes the uw field from retarded coordinates. &#34;&#34;&#34;
+        R_norm, R_unit = vec_split(R)
+        dp_dt = self.dp_dt(tau)
+        d2p_dt2 = self.d2p_dt2(tau)
+        near = cross(dp_dt, R_unit) / R_norm ** 2 / Constants.C
+        far = cross(d2p_dt2, R_unit) / R_norm / Constants.C ** 2
+        return Constants.K_u * (near + far)
+
+
+class MagneticDipole(PointSource):
+
+    m = JProperty(np.zeros(3))
+    dm_dt = JProperty(np.zeros(3))
+    d2m_dt2 = JProperty(np.zeros(3))
+
+    def __init__(self, m=None, dm_dt=None, d2m_dt2=None, **kwargs):
+        &#34;&#34;&#34;
+        :param location: callable or (..., 3) array, point source location.
+        :param m: callable, uw dipole moment as a function of t.
+        :param dm_dt: callable, first derivative of m as a function of t.
+        :param d2m_dt2: callable, second derivative of m as a function of t.
+        :param cut_off: float, exclusion distance around the source location.
+        Avoids very large numbers near the singularity. The fields are nan if
+        called within this region.
+        &#34;&#34;&#34;
+        super().__init__(**kwargs)
+        self.m = m
+        self.dm_dt = dm_dt
+        self.d2m_dt2 = d2m_dt2
+
+    @classmethod
+    def oscillator(cls, m=(0, 0, 1), freq=1e6, phase=0.0, **kwargs):
+        &#34;&#34;&#34;
+        Sinusodially oscillating dipole.
+        :param location: callable or (..., 3) array, point source location.
+        :param freq: float, frequency in Hz.
+        :param m: 3-array, dipole moment.
+        :param phase: float, phase in radians.
+        :param cut_off: float, exclusion distance around the source location.
+        &#34;&#34;&#34;
+        #TODO change into power irradiated? or as option?
+        m = np.array(m)
+        osc = HarmonicOscillator(amplitude=m, freq=freq, phase=phase)
+        return cls(m=osc.f, dm_dt=osc.df_dt, d2m_dt2=osc.d2f_dt2, **kwargs)
+
+    def E_retarded_coordinates(self, R, tau):
+        &#34;&#34;&#34; Computes the electric field from retarded coordinates. &#34;&#34;&#34;
+        R_norm, R_unit = vec_split(R)
+        far = cross(R_unit, self.d2m_dt2(tau)) / (R_norm * Constants.C)
+        near = cross(R_unit, self.dm_dt(tau)) / (R_norm ** 2)
+        return Constants.K_e / Constants.C * (far + near)
+
+    def B_retarded_coordinates(self, R, tau):
+        &#34;&#34;&#34; Computes the uw field from retarded coordinates. &#34;&#34;&#34;
+        R_norm, R_unit = vec_split(R)
+        far = (cross(R_unit, cross(R_unit, self.d2m_dt2(tau)))
+               / (Constants.C ** 2 * R_norm))
+        near1 = ((3 * dot_keepdim(R_unit, self.dm_dt(tau)) * R_unit
+                  - self.dm_dt(tau)) / (Constants.C * R_norm ** 2))
+        near2 = ((3 * dot_keepdim(R_unit, self.m(tau)) * R_unit
+                  - self.m(tau)) / R_norm ** 3)
+        return Constants.K_u * (far + near1 + near2)
+
+
+class WireSegment(PointSource):
+
+    #TODO d2I_dt2
+    &#34;&#34;&#34;
+    A wire segment is a line that carries a current. It&#39;s assumed that a segment
+    is small enough to be approximated by a points source.
+    &#34;&#34;&#34;
+
+    line = JProperty()
+    I = JProperty(1.0)
+    dIdt = JProperty(0.0)
+
+    def __init__(self, line=None, I=None, dI_dt=None, **kwargs):
+        &#34;&#34;&#34;
+        It is the responsibility of the user to create sensible
+        configurations. This mostly concerns charge conservation.
+        :param line: callable or (2,3)-array, start and end coordinate.
+        :param I: callback or float, current as a function of time.
+        :param dI_dt: callback or float, derivative of the  current as a
+                     function of time.
+        :param cut_off: float, length around location for which nan&#39;s are
+                        returned.
+        &#34;&#34;&#34;
+        self.line = line  # set attribute before super().__init__()
+        super().__init__(location=self._center, **kwargs)
+        self.I = I
+        self.dIdt = dI_dt
+
+    def _center(self, t):
+        &#34;&#34;&#34; Returns the center of the segment as function of time t.&#34;&#34;&#34;
+        r1, r2 = self.line(t)
+        return (r1 + r2) / 2
+
+    def _tangent(self, t):
+        &#34;&#34;&#34; Returns the tangent of the segment as function of time t.&#34;&#34;&#34;
+        r1, r2 = self.line(t)
+        return r1 - r2
+
+    def E_retarded_coordinates(self, R, tau):
+        R_norm = norm_keepdim(R)
+        term1 = self.dIdt(tau) * self._tangent(tau) / R_norm
+        return Constants.K_e / Constants.C ** 2 * term1
+
+    def B_retarded_coordinates(self, R, tau):
+        R_norm, R_unit = vec_split(R)
+        term1 = self.I(tau) * self._tangent(tau) / R_norm ** 2
+        term2 = self.dIdt(tau) * self._tangent(tau) / R_norm / Constants.C
+        return Constants.K_u * cross(term1 + term2, R_unit)
+        #TODO check this equation
+
+
+class Wire(SourceCollection):
+    &#34;&#34;&#34;
+    A collection of consecutive source_segments that carry the same current.
+    A wire is a collection of wire source_segments. The segmentation is built-in if
+    one of the class methods is used (from_curve(), polygon(), or cicrle())
+    It is possible to define wires that are not a loop, but be careful
+    with the interpretation as such a construct does not conserve charge.
+    &#34;&#34;&#34;
+
+    line = JProperty()
+    I = JProperty(1.0)
+    dIdt = JProperty(0.0)
+    movement = JProperty(np.zeros(3))
+
+    @classmethod
+    def curve(cls, curve, num_segments=50, I=None, dI_dt=None):
+        &#34;&#34;&#34;
+        Creates a wire based on an analytical curve. It handles segmentation
+        of the curve into PointSources.  A curve is some function
+        of s and t, where s is the curve parametrization between 0 and 1,
+        and t is the time. The curve function should return a 3D coordinate when
+        called for s and t. Note that callbacks are returned for the source_segments,
+        so the curve can change shape as a function of time.
+
+        :param curve: callable function of s and t
+        :param num_segments: int, number of PointSource elements to subdivide
+                             he curve in. Higher is more accurate, but increases
+                             computation time.
+        :param I: callback or float, current as a function of time.
+        :param dI_dt: callback or float, derivative of the  current as a
+                     function of time.
+        &#34;&#34;&#34;
+        s = np.linspace(0, 1.0, num_segments + 1)
+        segments = []
+        for i in range(0, num_segments):
+            def line(t, i=i):
+                return (curve(s[i], t), curve(s[i + 1], t))
+            segments.append(WireSegment(line=line, I=I, dI_dt=dI_dt))
+        return cls(segments)
+
+    @classmethod
+    def polygon(cls, nodes, num_segments=50, I=None, dI_dt=None, movement=None):
+        &#34;&#34;&#34;
+        A wire based on coordinates connected by straight lines.
+        :param nodes: (:, 3) array, coordinates of the polygon.
+        :param num_segments: int, number of PointSource elements to subdivide
+                             he curve in. Higher is more accurate, but increases
+                             computation time.
+        :param I: callback or float, current as a function of time.
+        :param dI_dt: callback or float, derivative of the  current as a
+                     function of time.
+        :param movement: callable, function of time that returns a vector
+                         which is added to all curve elements. This makes it
+                         possible to let the polygon move in space as a rigid
+                         body.
+        &#34;&#34;&#34;
+        movement = default(movement, lambda t: np.zeros(3))
+        nodes = np.array(nodes)
+        l = [nodes[i + 1, :] - nodes[i, :] for i in range(len(nodes[:, 0]) - 1)]
+        l_norm = np.array(list(map(np.linalg.norm, l)))
+        L = np.sum(l_norm)
+        l_sum = np.cumsum(np.concatenate(([0], l_norm)))
+
+        def curve(s, t):
+            i = np.argmax((s * L) &lt; l_sum) - 1
+            return movement(t) + nodes[i, :] \
+                   + (s * L - l_sum[i]) * l[i] / np.linalg.norm(l[i])
+
+        return cls.curve(curve, num_segments, I, dI_dt)
+
+    @classmethod
+    def circle(cls, center=(0, 0, 0), radius=1.0,
+               normal=None, movement=None,
+               num_segments=50, I=1.0, dI_dt=0.0):
+        &#34;&#34;&#34;
+        Creates a circular wire.
+        :param center: 3-array,
+        :param radius: float,
+        :param normal: 3-array, axial vector wrt the circle surface.
+        :param num_segments: int, number of PointSource elements to subdivide
+                             he curve in. Higher is more accurate, but increases
+                             computation time.
+        :param I: callback or float, current as a function of time.
+        :param dI_dt: callback or float, derivative of the  current as a
+                     function of time.
+        :param movement: callable, function of time that returns a vector
+                         which is added to all curve elements. This makes it
+                         possible to let the circle move in space.
+        &#34;&#34;&#34;
+
+        movement = default(movement, lambda t: np.zeros(3))
+        normal = default(normal, (0, 0, 1))
+        normal = normal / np.linalg.norm(normal)
+        u = np.linalg.norm(np.array([-normal[0], normal[1], 0]))
+        if normal[0] == 0 and normal[1] == 0:
+            u = np.array([0, 1, 0])
+        v = cross(normal, u)
+        v = v / np.linalg.norm(v)
+        def curve(s, t):
+            return movement(t) + center + radius * u * np.cos(s * 2 * np.pi) \
+                   + radius * v * np.sin(s * 2 * np.pi)
+        return cls.curve(curve, num_segments, I, dI_dt)
+
+    def get_segmentation(self, t=0):
+        coordinates = []
+        for segment in self.values():
+            coordinates.extend(segment.line(t))
+        return np.array(coordinates)
+
+
+class Uniform(Source):
+    &#34;&#34;&#34; Space independent fields. &#34;&#34;&#34;
+
+    _E = JProperty(np.zeros(3))
+    _B = JProperty(np.zeros(3))
+
+    def __init__(self, E=None, B=None):
+        #super().__init__()
+        self._E = E
+        self._B = B
+
+    @broadcast_spacetime
+    def E(self, r, t):
+        return match_shape(self._E(t), r)
+
+    @broadcast_spacetime
+    def B(self, r, t):
+        return match_shape(self._B(t), r)
+
+
+
+class PointCharge(PointSource):
+
+    &#34;&#34;&#34; TODO Infinitely small electric  charge,
+    The Liénard–Wiechert potential needs to be put here.
+    &#34;&#34;&#34;
+
+    q = JProperty()
+
+    def __init__(self, location=(0, 0, 0), q=None, cut_off=1.0):
+        &#34;&#34;&#34;
+        &#34;&#34;&#34;
+        pass
+
+    @classmethod
+    def oscillator(cls):
+        pass
+
+    def E_retarded_coordinates(self, R, tau):
+       pass
+
+    def B_retarded_coordinates(self, R, tau):
+        pass
+
+
+class Observer:
+    &#34;&#34;&#34;&#34;
+    A set of registered measurement locations that observes a collection of
+    sources. A convenient way to use jefpy. Yields E and B as functions of t.
+    These functions can be used directly or used as call-backs in visualizations.
+    &#34;&#34;&#34;
+
+    r = JProperty()
+
+    def __init__(self, r, sources, observable=&#39;uvw&#39;, transform=None):
+        &#34;&#34;&#34;
+        :param r: (..., 3)-array, callback: observer location
+        :param sources: collection of Source objects.
+        &#34;&#34;&#34;
+        if not isinstance(sources, SourceCollection):
+            if isinstance(sources, Source):
+                sources = {&#39;source&#39;: sources}
+            sources = SourceCollection(sources)
+        self.sources = sources
+        self.sources.observable = observable
+        self.sources.transform = transform or (lambda r, F: F)
+        self.r = r
+
+    def E(self, t=0.0):
+        return self.sources.E(self.r(t), t)
+
+    def B(self, t=0.0):
+        return self.sources.B(self.r(t), t)
+
+    def S(self, t=0.0):
+        return self.sources.S(self.r(t), t)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="jefpy.physics.Constants"><code class="flex name class">
+<span>class <span class="ident">Constants</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Constants()</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Constants:
+    C: float = 299792458
+    EPS_0: float = 8.8541878128e-12
+    MU_0: float = 1.25663706212e-6
+    K_e: float = 1 / (4 * np.pi * EPS_0)
+    K_u: float = MU_0 / (4 * np.pi)</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="jefpy.physics.Constants.C"><code class="name">var <span class="ident">C</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="jefpy.physics.Constants.EPS_0"><code class="name">var <span class="ident">EPS_0</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="jefpy.physics.Constants.K_e"><code class="name">var <span class="ident">K_e</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="jefpy.physics.Constants.K_u"><code class="name">var <span class="ident">K_u</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="jefpy.physics.Constants.MU_0"><code class="name">var <span class="ident">MU_0</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="jefpy.physics.ElectricDipole"><code class="flex name class">
+<span>class <span class="ident">ElectricDipole</span></span>
+<span>(</span><span>p=None, dp_dt=None, d2p_dt2=None, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Infinitely small electric dipole.</p>
+<p>:param location: callable that returns a 3-array, or a 3-array. Sets
+the (dynamic) location of the source.
+:param p: callable, function of t returning the dipole moment.
+:param dp_dt: callable, function of returning the derivative of the
+dipole moment.
+:param d2p_dt2: callable, function of t returning the second
+derivative of the dipole moment.
+:param cut_off: float, exclusion distance around the source location.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ElectricDipole(PointSource):
+    &#34;&#34;&#34; Infinitely small electric dipole.&#34;&#34;&#34;
+
+    p = JProperty(np.zeros(3))
+    dp_dt = JProperty(np.zeros(3))
+    d2p_dt2 = JProperty(np.zeros(3))
+
+    def __init__(self, p=None, dp_dt=None, d2p_dt2=None, **kwargs):
+        &#34;&#34;&#34;
+        :param location: callable that returns a 3-array, or a 3-array. Sets
+                         the (dynamic) location of the source.
+        :param p: callable, function of t returning the dipole moment.
+        :param dp_dt: callable, function of returning the derivative of the
+                     dipole moment.
+        :param d2p_dt2: callable, function of t returning the second
+                       derivative of the dipole moment.
+        :param cut_off: float, exclusion distance around the source location.
+        &#34;&#34;&#34;
+        super().__init__(**kwargs)
+        self.p = p
+        self.dp_dt = dp_dt
+        self.d2p_dt2 = d2p_dt2
+
+    @classmethod
+    def oscillator(cls, power=1.0, freq=1e9, orientation=(0, 0, 1), phase=0.0, **kwargs):
+        &#34;&#34;&#34;
+        Harmonically oscillating electric dipole.
+        :param location: callable that returns a 3-array, or a 3-array. Sets
+                         the (dynamic) location of the source.
+        :param power: float, total irradiated power.
+        :param freq: float, frequency
+        :param orientation: 3-array, direction of the dipole moment.
+                            Magnitude is ignored.
+        :param phase: float
+        :param cut_off: float, distance to source that returns nan.
+        :return:
+        &#34;&#34;&#34;
+
+        # TODO: Consider making these properties all quasi-static
+        orientation = np.array(orientation) / norm(np.array(orientation))
+        p0 = (np.array(orientation)
+              * np.sqrt(power * 12 * np.pi * Constants.C / Constants.MU_0) /
+              (freq * 2 * np.pi) ** 2)
+        osc = HarmonicOscillator(amplitude=p0, freq=freq, phase=phase)
+        return cls(p=osc.f, dp_dt=osc.df_dt, d2p_dt2=osc.d2f_dt2, **kwargs)
+
+    def E_retarded_coordinates(self, R, tau):
+        &#34;&#34;&#34; Computes the electric field from retarded coordinates. &#34;&#34;&#34;
+        R_norm, R_unit = vec_split(R)
+        p = self.p(tau)
+        dp_dt = self.dp_dt(tau)
+        d2p_dt2 = self.d2p_dt2(tau)
+        near1 = Constants.C * (3 * dot_keepdim(R_unit, p) * R_unit - p) / R_norm ** 3
+        near2 = (3 * dot_keepdim(R_unit, dp_dt) * R_unit - dp_dt) / R_norm ** 2
+        far = (cross(R_unit, cross(R_unit, d2p_dt2)) / (Constants.C * R_norm))
+        return Constants.K_e / Constants.C * (near1 + near2 + far)
+
+    def B_retarded_coordinates(self, R, tau):
+        &#34;&#34;&#34; Computes the uw field from retarded coordinates. &#34;&#34;&#34;
+        R_norm, R_unit = vec_split(R)
+        dp_dt = self.dp_dt(tau)
+        d2p_dt2 = self.d2p_dt2(tau)
+        near = cross(dp_dt, R_unit) / R_norm ** 2 / Constants.C
+        far = cross(d2p_dt2, R_unit) / R_norm / Constants.C ** 2
+        return Constants.K_u * (near + far)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="jefpy.physics.PointSource" href="#jefpy.physics.PointSource">PointSource</a></li>
+<li><a title="jefpy.physics.Source" href="#jefpy.physics.Source">Source</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="jefpy.physics.ElectricDipole.oscillator"><code class="name flex">
+<span>def <span class="ident">oscillator</span></span>(<span>power=1.0, freq=1000000000.0, orientation=(0, 0, 1), phase=0.0, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Harmonically oscillating electric dipole.
+:param location: callable that returns a 3-array, or a 3-array. Sets
+the (dynamic) location of the source.
+:param power: float, total irradiated power.
+:param freq: float, frequency
+:param orientation: 3-array, direction of the dipole moment.
+Magnitude is ignored.
+:param phase: float
+:param cut_off: float, distance to source that returns nan.
+:return:</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def oscillator(cls, power=1.0, freq=1e9, orientation=(0, 0, 1), phase=0.0, **kwargs):
+    &#34;&#34;&#34;
+    Harmonically oscillating electric dipole.
+    :param location: callable that returns a 3-array, or a 3-array. Sets
+                     the (dynamic) location of the source.
+    :param power: float, total irradiated power.
+    :param freq: float, frequency
+    :param orientation: 3-array, direction of the dipole moment.
+                        Magnitude is ignored.
+    :param phase: float
+    :param cut_off: float, distance to source that returns nan.
+    :return:
+    &#34;&#34;&#34;
+
+    # TODO: Consider making these properties all quasi-static
+    orientation = np.array(orientation) / norm(np.array(orientation))
+    p0 = (np.array(orientation)
+          * np.sqrt(power * 12 * np.pi * Constants.C / Constants.MU_0) /
+          (freq * 2 * np.pi) ** 2)
+    osc = HarmonicOscillator(amplitude=p0, freq=freq, phase=phase)
+    return cls(p=osc.f, dp_dt=osc.df_dt, d2p_dt2=osc.d2f_dt2, **kwargs)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="jefpy.physics.ElectricDipole.d2p_dt2"><code class="name">var <span class="ident">d2p_dt2</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, obj, type=None):
+    return obj.__dict__[self.name]</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.ElectricDipole.dp_dt"><code class="name">var <span class="ident">dp_dt</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, obj, type=None):
+    return obj.__dict__[self.name]</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.ElectricDipole.p"><code class="name">var <span class="ident">p</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, obj, type=None):
+    return obj.__dict__[self.name]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="jefpy.physics.ElectricDipole.B_retarded_coordinates"><code class="name flex">
+<span>def <span class="ident">B_retarded_coordinates</span></span>(<span>self, R, tau)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes the uw field from retarded coordinates.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def B_retarded_coordinates(self, R, tau):
+    &#34;&#34;&#34; Computes the uw field from retarded coordinates. &#34;&#34;&#34;
+    R_norm, R_unit = vec_split(R)
+    dp_dt = self.dp_dt(tau)
+    d2p_dt2 = self.d2p_dt2(tau)
+    near = cross(dp_dt, R_unit) / R_norm ** 2 / Constants.C
+    far = cross(d2p_dt2, R_unit) / R_norm / Constants.C ** 2
+    return Constants.K_u * (near + far)</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.ElectricDipole.E_retarded_coordinates"><code class="name flex">
+<span>def <span class="ident">E_retarded_coordinates</span></span>(<span>self, R, tau)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes the electric field from retarded coordinates.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def E_retarded_coordinates(self, R, tau):
+    &#34;&#34;&#34; Computes the electric field from retarded coordinates. &#34;&#34;&#34;
+    R_norm, R_unit = vec_split(R)
+    p = self.p(tau)
+    dp_dt = self.dp_dt(tau)
+    d2p_dt2 = self.d2p_dt2(tau)
+    near1 = Constants.C * (3 * dot_keepdim(R_unit, p) * R_unit - p) / R_norm ** 3
+    near2 = (3 * dot_keepdim(R_unit, dp_dt) * R_unit - dp_dt) / R_norm ** 2
+    far = (cross(R_unit, cross(R_unit, d2p_dt2)) / (Constants.C * R_norm))
+    return Constants.K_e / Constants.C * (near1 + near2 + far)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="jefpy.physics.PointSource" href="#jefpy.physics.PointSource">PointSource</a></b></code>:
+<ul class="hlist">
+<li><code><a title="jefpy.physics.PointSource.B" href="#jefpy.physics.Source.B">B</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.E" href="#jefpy.physics.Source.E">E</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.S" href="#jefpy.physics.Source.S">S</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.V" href="#jefpy.physics.PointSource.V">V</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.V_retarded_coordinates" href="#jefpy.physics.PointSource.V_retarded_coordinates">V_retarded_coordinates</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.retarded_coordinates" href="#jefpy.physics.PointSource.retarded_coordinates">retarded_coordinates</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="jefpy.physics.MagneticDipole"><code class="flex name class">
+<span>class <span class="ident">MagneticDipole</span></span>
+<span>(</span><span>m=None, dm_dt=None, d2m_dt2=None, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for most sources. Assumes the location is one point in space.
+The location can be set by an array or by a callable returning an array
+such that the source can move through space.</p>
+<p>Retarded coordinates are used. This means that for implementation
+of a source it be assumed to be in the origin. The retarded coordinates are:
+R: (&hellip;, 3): vector from source to observer.
+tau: float or (&hellip;, 1): retarded time at observer.</p>
+<p>:param location: callable or (&hellip;, 3) array, point source location.
+:param m: callable, uw dipole moment as a function of t.
+:param dm_dt: callable, first derivative of m as a function of t.
+:param d2m_dt2: callable, second derivative of m as a function of t.
+:param cut_off: float, exclusion distance around the source location.
+Avoids very large numbers near the singularity. The fields are nan if
+called within this region.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MagneticDipole(PointSource):
+
+    m = JProperty(np.zeros(3))
+    dm_dt = JProperty(np.zeros(3))
+    d2m_dt2 = JProperty(np.zeros(3))
+
+    def __init__(self, m=None, dm_dt=None, d2m_dt2=None, **kwargs):
+        &#34;&#34;&#34;
+        :param location: callable or (..., 3) array, point source location.
+        :param m: callable, uw dipole moment as a function of t.
+        :param dm_dt: callable, first derivative of m as a function of t.
+        :param d2m_dt2: callable, second derivative of m as a function of t.
+        :param cut_off: float, exclusion distance around the source location.
+        Avoids very large numbers near the singularity. The fields are nan if
+        called within this region.
+        &#34;&#34;&#34;
+        super().__init__(**kwargs)
+        self.m = m
+        self.dm_dt = dm_dt
+        self.d2m_dt2 = d2m_dt2
+
+    @classmethod
+    def oscillator(cls, m=(0, 0, 1), freq=1e6, phase=0.0, **kwargs):
+        &#34;&#34;&#34;
+        Sinusodially oscillating dipole.
+        :param location: callable or (..., 3) array, point source location.
+        :param freq: float, frequency in Hz.
+        :param m: 3-array, dipole moment.
+        :param phase: float, phase in radians.
+        :param cut_off: float, exclusion distance around the source location.
+        &#34;&#34;&#34;
+        #TODO change into power irradiated? or as option?
+        m = np.array(m)
+        osc = HarmonicOscillator(amplitude=m, freq=freq, phase=phase)
+        return cls(m=osc.f, dm_dt=osc.df_dt, d2m_dt2=osc.d2f_dt2, **kwargs)
+
+    def E_retarded_coordinates(self, R, tau):
+        &#34;&#34;&#34; Computes the electric field from retarded coordinates. &#34;&#34;&#34;
+        R_norm, R_unit = vec_split(R)
+        far = cross(R_unit, self.d2m_dt2(tau)) / (R_norm * Constants.C)
+        near = cross(R_unit, self.dm_dt(tau)) / (R_norm ** 2)
+        return Constants.K_e / Constants.C * (far + near)
+
+    def B_retarded_coordinates(self, R, tau):
+        &#34;&#34;&#34; Computes the uw field from retarded coordinates. &#34;&#34;&#34;
+        R_norm, R_unit = vec_split(R)
+        far = (cross(R_unit, cross(R_unit, self.d2m_dt2(tau)))
+               / (Constants.C ** 2 * R_norm))
+        near1 = ((3 * dot_keepdim(R_unit, self.dm_dt(tau)) * R_unit
+                  - self.dm_dt(tau)) / (Constants.C * R_norm ** 2))
+        near2 = ((3 * dot_keepdim(R_unit, self.m(tau)) * R_unit
+                  - self.m(tau)) / R_norm ** 3)
+        return Constants.K_u * (far + near1 + near2)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="jefpy.physics.PointSource" href="#jefpy.physics.PointSource">PointSource</a></li>
+<li><a title="jefpy.physics.Source" href="#jefpy.physics.Source">Source</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="jefpy.physics.MagneticDipole.oscillator"><code class="name flex">
+<span>def <span class="ident">oscillator</span></span>(<span>m=(0, 0, 1), freq=1000000.0, phase=0.0, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Sinusodially oscillating dipole.
+:param location: callable or (&hellip;, 3) array, point source location.
+:param freq: float, frequency in Hz.
+:param m: 3-array, dipole moment.
+:param phase: float, phase in radians.
+:param cut_off: float, exclusion distance around the source location.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def oscillator(cls, m=(0, 0, 1), freq=1e6, phase=0.0, **kwargs):
+    &#34;&#34;&#34;
+    Sinusodially oscillating dipole.
+    :param location: callable or (..., 3) array, point source location.
+    :param freq: float, frequency in Hz.
+    :param m: 3-array, dipole moment.
+    :param phase: float, phase in radians.
+    :param cut_off: float, exclusion distance around the source location.
+    &#34;&#34;&#34;
+    #TODO change into power irradiated? or as option?
+    m = np.array(m)
+    osc = HarmonicOscillator(amplitude=m, freq=freq, phase=phase)
+    return cls(m=osc.f, dm_dt=osc.df_dt, d2m_dt2=osc.d2f_dt2, **kwargs)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="jefpy.physics.MagneticDipole.d2m_dt2"><code class="name">var <span class="ident">d2m_dt2</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, obj, type=None):
+    return obj.__dict__[self.name]</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.MagneticDipole.dm_dt"><code class="name">var <span class="ident">dm_dt</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, obj, type=None):
+    return obj.__dict__[self.name]</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.MagneticDipole.m"><code class="name">var <span class="ident">m</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, obj, type=None):
+    return obj.__dict__[self.name]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="jefpy.physics.MagneticDipole.B_retarded_coordinates"><code class="name flex">
+<span>def <span class="ident">B_retarded_coordinates</span></span>(<span>self, R, tau)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes the uw field from retarded coordinates.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def B_retarded_coordinates(self, R, tau):
+    &#34;&#34;&#34; Computes the uw field from retarded coordinates. &#34;&#34;&#34;
+    R_norm, R_unit = vec_split(R)
+    far = (cross(R_unit, cross(R_unit, self.d2m_dt2(tau)))
+           / (Constants.C ** 2 * R_norm))
+    near1 = ((3 * dot_keepdim(R_unit, self.dm_dt(tau)) * R_unit
+              - self.dm_dt(tau)) / (Constants.C * R_norm ** 2))
+    near2 = ((3 * dot_keepdim(R_unit, self.m(tau)) * R_unit
+              - self.m(tau)) / R_norm ** 3)
+    return Constants.K_u * (far + near1 + near2)</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.MagneticDipole.E_retarded_coordinates"><code class="name flex">
+<span>def <span class="ident">E_retarded_coordinates</span></span>(<span>self, R, tau)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes the electric field from retarded coordinates.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def E_retarded_coordinates(self, R, tau):
+    &#34;&#34;&#34; Computes the electric field from retarded coordinates. &#34;&#34;&#34;
+    R_norm, R_unit = vec_split(R)
+    far = cross(R_unit, self.d2m_dt2(tau)) / (R_norm * Constants.C)
+    near = cross(R_unit, self.dm_dt(tau)) / (R_norm ** 2)
+    return Constants.K_e / Constants.C * (far + near)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="jefpy.physics.PointSource" href="#jefpy.physics.PointSource">PointSource</a></b></code>:
+<ul class="hlist">
+<li><code><a title="jefpy.physics.PointSource.B" href="#jefpy.physics.Source.B">B</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.E" href="#jefpy.physics.Source.E">E</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.S" href="#jefpy.physics.Source.S">S</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.V" href="#jefpy.physics.PointSource.V">V</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.V_retarded_coordinates" href="#jefpy.physics.PointSource.V_retarded_coordinates">V_retarded_coordinates</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.retarded_coordinates" href="#jefpy.physics.PointSource.retarded_coordinates">retarded_coordinates</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="jefpy.physics.Observer"><code class="flex name class">
+<span>class <span class="ident">Observer</span></span>
+<span>(</span><span>r, sources, observable='uvw', transform=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>"
+A set of registered measurement locations that observes a collection of
+sources. A convenient way to use jefpy. Yields E and B as functions of t.
+These functions can be used directly or used as call-backs in visualizations.</p>
+<p>:param r: (&hellip;, 3)-array, callback: observer location
+:param sources: collection of Source objects.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Observer:
+    &#34;&#34;&#34;&#34;
+    A set of registered measurement locations that observes a collection of
+    sources. A convenient way to use jefpy. Yields E and B as functions of t.
+    These functions can be used directly or used as call-backs in visualizations.
+    &#34;&#34;&#34;
+
+    r = JProperty()
+
+    def __init__(self, r, sources, observable=&#39;uvw&#39;, transform=None):
+        &#34;&#34;&#34;
+        :param r: (..., 3)-array, callback: observer location
+        :param sources: collection of Source objects.
+        &#34;&#34;&#34;
+        if not isinstance(sources, SourceCollection):
+            if isinstance(sources, Source):
+                sources = {&#39;source&#39;: sources}
+            sources = SourceCollection(sources)
+        self.sources = sources
+        self.sources.observable = observable
+        self.sources.transform = transform or (lambda r, F: F)
+        self.r = r
+
+    def E(self, t=0.0):
+        return self.sources.E(self.r(t), t)
+
+    def B(self, t=0.0):
+        return self.sources.B(self.r(t), t)
+
+    def S(self, t=0.0):
+        return self.sources.S(self.r(t), t)</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="jefpy.physics.Observer.r"><code class="name">var <span class="ident">r</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, obj, type=None):
+    return obj.__dict__[self.name]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="jefpy.physics.Observer.B"><code class="name flex">
+<span>def <span class="ident">B</span></span>(<span>self, t=0.0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def B(self, t=0.0):
+    return self.sources.B(self.r(t), t)</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.Observer.E"><code class="name flex">
+<span>def <span class="ident">E</span></span>(<span>self, t=0.0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def E(self, t=0.0):
+    return self.sources.E(self.r(t), t)</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.Observer.S"><code class="name flex">
+<span>def <span class="ident">S</span></span>(<span>self, t=0.0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def S(self, t=0.0):
+    return self.sources.S(self.r(t), t)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="jefpy.physics.PointCharge"><code class="flex name class">
+<span>class <span class="ident">PointCharge</span></span>
+<span>(</span><span>location=(0, 0, 0), q=None, cut_off=1.0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>TODO Infinitely small electric
+charge,
+The Liénard–Wiechert potential needs to be put here.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PointCharge(PointSource):
+
+    &#34;&#34;&#34; TODO Infinitely small electric  charge,
+    The Liénard–Wiechert potential needs to be put here.
+    &#34;&#34;&#34;
+
+    q = JProperty()
+
+    def __init__(self, location=(0, 0, 0), q=None, cut_off=1.0):
+        &#34;&#34;&#34;
+        &#34;&#34;&#34;
+        pass
+
+    @classmethod
+    def oscillator(cls):
+        pass
+
+    def E_retarded_coordinates(self, R, tau):
+       pass
+
+    def B_retarded_coordinates(self, R, tau):
+        pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="jefpy.physics.PointSource" href="#jefpy.physics.PointSource">PointSource</a></li>
+<li><a title="jefpy.physics.Source" href="#jefpy.physics.Source">Source</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="jefpy.physics.PointCharge.oscillator"><code class="name flex">
+<span>def <span class="ident">oscillator</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def oscillator(cls):
+    pass</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="jefpy.physics.PointCharge.q"><code class="name">var <span class="ident">q</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, obj, type=None):
+    return obj.__dict__[self.name]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="jefpy.physics.PointSource" href="#jefpy.physics.PointSource">PointSource</a></b></code>:
+<ul class="hlist">
+<li><code><a title="jefpy.physics.PointSource.B" href="#jefpy.physics.Source.B">B</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.B_retarded_coordinates" href="#jefpy.physics.PointSource.B_retarded_coordinates">B_retarded_coordinates</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.E" href="#jefpy.physics.Source.E">E</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.E_retarded_coordinates" href="#jefpy.physics.PointSource.E_retarded_coordinates">E_retarded_coordinates</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.S" href="#jefpy.physics.Source.S">S</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.V" href="#jefpy.physics.PointSource.V">V</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.V_retarded_coordinates" href="#jefpy.physics.PointSource.V_retarded_coordinates">V_retarded_coordinates</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.retarded_coordinates" href="#jefpy.physics.PointSource.retarded_coordinates">retarded_coordinates</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="jefpy.physics.PointSource"><code class="flex name class">
+<span>class <span class="ident">PointSource</span></span>
+<span>(</span><span>location=None, cut_off=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for most sources. Assumes the location is one point in space.
+The location can be set by an array or by a callable returning an array
+such that the source can move through space.</p>
+<p>Retarded coordinates are used. This means that for implementation
+of a source it be assumed to be in the origin. The retarded coordinates are:
+R: (&hellip;, 3): vector from source to observer.
+tau: float or (&hellip;, 1): retarded time at observer.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PointSource(Source):
+    &#34;&#34;&#34;
+    Base class for most sources. Assumes the location is one point in space.
+    The location can be set by an array or by a callable returning an array
+    such that the source can move through space.
+
+    Retarded coordinates are used. This means that for implementation
+    of a source it be assumed to be in the origin. The retarded coordinates are:
+    R: (..., 3): vector from source to observer.
+    tau: float or (..., 1): retarded time at observer.
+    &#34;&#34;&#34;
+
+    location = JProperty((0, 0, 0))
+    cut_off = JProperty(1e-12)
+
+    def __init__(self, location=None, cut_off=None):
+        self.location = location
+        self.cut_off = cut_off
+        #super().__init__()
+
+    @broadcast_spacetime
+    def E(self, r, t=.0):
+        &#34;&#34;&#34; Returns the electric field at location r at time t. &#34;&#34;&#34;
+        return self.E_retarded_coordinates(*self.retarded_coordinates(r, t))
+
+    @broadcast_spacetime
+    def B(self, r, t=.0):
+        &#34;&#34;&#34; Returns the uw field at location r at time t. &#34;&#34;&#34;
+        return self.B_retarded_coordinates(*self.retarded_coordinates(r, t))
+
+    @broadcast_spacetime
+    def V(self, r, t=.0):
+        &#34;&#34;&#34; Returns the electrostatic potential at location r at time t.&#34;&#34;&#34;
+        return self.V_retarded_coordinates(*self.retarded_coordinates(r, t))
+
+    def E_retarded_coordinates(self, R, tau):
+        &#34;&#34;&#34; Computes the electrostatic potential from retarded coordinates. &#34;&#34;&#34;
+        raise NotImplementedError
+
+    def B_retarded_coordinates(self, R, tau):
+        &#34;&#34;&#34; Computes the electrostatic potential from retarded coordinates. &#34;&#34;&#34;
+        raise NotImplementedError
+
+    def V_retarded_coordinates(self, R, tau):
+        &#34;&#34;&#34; Computes the electrostatic potential from retarded coordinates. &#34;&#34;&#34;
+        raise NotImplementedError
+
+    def retarded_coordinates(self, r, t):
+        &#34;&#34;&#34; Creates the retarded coordinates at the requested space-time locations. &#34;&#34;&#34;
+        R = np.array(r) - self.location(t)
+        tau = t - norm_keepdim(R) / Constants.C
+        # Mind the broadcasting of various dimensionalities.
+        # Introduces nan&#39;s for retarded coordinates too close to the source.
+        R[norm_keepshape(R) &lt; self.cut_off(t)] = np.nan
+        return R, tau</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="jefpy.physics.Source" href="#jefpy.physics.Source">Source</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="jefpy.physics.ElectricDipole" href="#jefpy.physics.ElectricDipole">ElectricDipole</a></li>
+<li><a title="jefpy.physics.MagneticDipole" href="#jefpy.physics.MagneticDipole">MagneticDipole</a></li>
+<li><a title="jefpy.physics.PointCharge" href="#jefpy.physics.PointCharge">PointCharge</a></li>
+<li><a title="jefpy.physics.WireSegment" href="#jefpy.physics.WireSegment">WireSegment</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="jefpy.physics.PointSource.cut_off"><code class="name">var <span class="ident">cut_off</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, obj, type=None):
+    return obj.__dict__[self.name]</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.PointSource.location"><code class="name">var <span class="ident">location</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, obj, type=None):
+    return obj.__dict__[self.name]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="jefpy.physics.PointSource.B_retarded_coordinates"><code class="name flex">
+<span>def <span class="ident">B_retarded_coordinates</span></span>(<span>self, R, tau)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes the electrostatic potential from retarded coordinates.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def B_retarded_coordinates(self, R, tau):
+    &#34;&#34;&#34; Computes the electrostatic potential from retarded coordinates. &#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.PointSource.E_retarded_coordinates"><code class="name flex">
+<span>def <span class="ident">E_retarded_coordinates</span></span>(<span>self, R, tau)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes the electrostatic potential from retarded coordinates.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def E_retarded_coordinates(self, R, tau):
+    &#34;&#34;&#34; Computes the electrostatic potential from retarded coordinates. &#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.PointSource.V"><code class="name flex">
+<span>def <span class="ident">V</span></span>(<span>self, r, t=0.0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the electrostatic potential at location r at time t.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@broadcast_spacetime
+def V(self, r, t=.0):
+    &#34;&#34;&#34; Returns the electrostatic potential at location r at time t.&#34;&#34;&#34;
+    return self.V_retarded_coordinates(*self.retarded_coordinates(r, t))</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.PointSource.V_retarded_coordinates"><code class="name flex">
+<span>def <span class="ident">V_retarded_coordinates</span></span>(<span>self, R, tau)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Computes the electrostatic potential from retarded coordinates.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def V_retarded_coordinates(self, R, tau):
+    &#34;&#34;&#34; Computes the electrostatic potential from retarded coordinates. &#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.PointSource.retarded_coordinates"><code class="name flex">
+<span>def <span class="ident">retarded_coordinates</span></span>(<span>self, r, t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates the retarded coordinates at the requested space-time locations.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def retarded_coordinates(self, r, t):
+    &#34;&#34;&#34; Creates the retarded coordinates at the requested space-time locations. &#34;&#34;&#34;
+    R = np.array(r) - self.location(t)
+    tau = t - norm_keepdim(R) / Constants.C
+    # Mind the broadcasting of various dimensionalities.
+    # Introduces nan&#39;s for retarded coordinates too close to the source.
+    R[norm_keepshape(R) &lt; self.cut_off(t)] = np.nan
+    return R, tau</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="jefpy.physics.Source" href="#jefpy.physics.Source">Source</a></b></code>:
+<ul class="hlist">
+<li><code><a title="jefpy.physics.Source.B" href="#jefpy.physics.Source.B">B</a></code></li>
+<li><code><a title="jefpy.physics.Source.E" href="#jefpy.physics.Source.E">E</a></code></li>
+<li><code><a title="jefpy.physics.Source.S" href="#jefpy.physics.Source.S">S</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="jefpy.physics.Source"><code class="flex name class">
+<span>class <span class="ident">Source</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Template for any source. If a source is only uw or electric,
+an array of zeros should be returned for the non-existent field.
+Allowed types of r, t depends on the implementation. See main documentation.</p>
+<p>Note about the common arguments r, t:
+r: (&hellip;, 3): position(s) of observer anywhere in the shared spacetime frame.
+t: float or (&hellip;, 1): time of the observation in shared spacetime frame.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Source(ABC):
+    &#34;&#34;&#34;
+    Template for any source. If a source is only uw or electric,
+    an array of zeros should be returned for the non-existent field.
+    Allowed types of r, t depends on the implementation. See main documentation.
+
+    Note about the common arguments r, t:
+    r: (..., 3): position(s) of observer anywhere in the shared spacetime frame.
+    t: float or (..., 1): time of the observation in shared spacetime frame.
+    &#34;&#34;&#34;
+
+    def E(self, r, t=.0):
+        &#34;&#34;&#34; Returns the electric field at location r at time t. &#34;&#34;&#34;
+        raise NotImplementedError
+
+    def B(self, r, t=.0):
+        &#34;&#34;&#34; Returns the uw field at location r at time t. &#34;&#34;&#34;
+        raise NotImplementedError
+
+    @broadcast_spacetime
+    def S(self, r, t=.0):
+        &#34;&#34;&#34; Returns the Poynting vector at location r at time t. &#34;&#34;&#34;
+        return 1.0 / Constants.MU_0 * cross(self.E(r, t), self.B(r, t))
+
+    def __add__(self, addition):
+        if isinstance(addition, Source):
+            return SourceCollection((self, addition))
+        elif isinstance(addition, SourceCollection):
+            addition[str(uuid.uuid4())] = self
+            return addition</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>abc.ABC</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="jefpy.physics.PointSource" href="#jefpy.physics.PointSource">PointSource</a></li>
+<li><a title="jefpy.physics.Uniform" href="#jefpy.physics.Uniform">Uniform</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="jefpy.physics.Source.B"><code class="name flex">
+<span>def <span class="ident">B</span></span>(<span>self, r, t=0.0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the uw field at location r at time t.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def B(self, r, t=.0):
+    &#34;&#34;&#34; Returns the uw field at location r at time t. &#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.Source.E"><code class="name flex">
+<span>def <span class="ident">E</span></span>(<span>self, r, t=0.0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the electric field at location r at time t.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def E(self, r, t=.0):
+    &#34;&#34;&#34; Returns the electric field at location r at time t. &#34;&#34;&#34;
+    raise NotImplementedError</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.Source.S"><code class="name flex">
+<span>def <span class="ident">S</span></span>(<span>self, r, t=0.0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the Poynting vector at location r at time t.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@broadcast_spacetime
+def S(self, r, t=.0):
+    &#34;&#34;&#34; Returns the Poynting vector at location r at time t. &#34;&#34;&#34;
+    return 1.0 / Constants.MU_0 * cross(self.E(r, t), self.B(r, t))</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="jefpy.physics.SourceCollection"><code class="flex name class">
+<span>class <span class="ident">SourceCollection</span></span>
+<span>(</span><span>sources=None, observable='uvw', transform=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Special dictionary of source objects. Besides regular dictionary
+operations, the methods E, B and S are available, which give
+the summed fields of all sources.</p>
+<p>Can be nested with SourceCollections. This is very useful when
+making groups of sources.</p>
+<p>A note on inheritance from dict, which is sometimes frowned upon.
+Because the standard mechanisms such as <strong>get</strong> and <strong>set</strong> are
+not mingled with here, so for this purpose it is alright imho.</p>
+<p>sources: a Source object or a collection of Source objects.
+observable: str / tuple / int
+Applies a tunable observation to the field.
+Options are 'uvw', 'norm', 'uv', 'uw', 'vw', or a tuple specifying
+which spatial dimension need to be taken, or an int representing one
+single dimension. Note that without transformation, uvw = xyz. However
+with transformation, uvw represent the new coordinate system dimensions.
+transform: callback
+Coordinate system transformation to apply to the vector field.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SourceCollection(OrderedDict):
+    &#34;&#34;&#34;
+    Special dictionary of source objects. Besides regular dictionary
+    operations, the methods E, B and S are available, which give
+    the summed fields of all sources.
+
+    Can be nested with SourceCollections. This is very useful when
+    making groups of sources.
+
+    A note on inheritance from dict, which is sometimes frowned upon.
+    Because the standard mechanisms such as __get__ and __set__ are
+    not mingled with here, so for this purpose it is alright imho.
+    &#34;&#34;&#34;
+
+    def __init__(self, sources=None, observable=&#39;uvw&#39;, transform=None):
+        &#34;&#34;&#34;
+        sources: a Source object or a collection of Source objects.
+        observable: str / tuple / int
+            Applies a tunable observation to the field.
+            Options are &#39;uvw&#39;, &#39;norm&#39;, &#39;uv&#39;, &#39;uw&#39;, &#39;vw&#39;, or a tuple specifying
+            which spatial dimension need to be taken, or an int representing one
+            single dimension. Note that without transformation, uvw = xyz. However
+            with transformation, uvw represent the new coordinate system dimensions.
+        transform: callback
+            Coordinate system transformation to apply to the vector field.
+        &#34;&#34;&#34;
+        if sources is None:
+            sources = {}
+        elif isinstance(sources, (list, tuple, set)):
+            sources = {uuid.uuid4(): source for source in sources}
+        elif isinstance(sources, Source):
+            sources = {uuid.uuid4(): sources}
+        super().__init__(sources)
+
+        self.observable = observable
+        self.transform = transform or (lambda r, F: F)
+
+    def _sum(self, r, t, field_type, transform=None, observable=None):
+        &#34;&#34;&#34;
+        Returns the field of all sources combined (superposition) at location                      
+        r at time t. 
+        field_type: str, &#39;E&#39;, &#39;B&#39;, &#39;S&#39;
+        &#34;&#34;&#34;
+        F = np.zeros_like(r)
+        for source in self.values():
+            if isinstance(source, Source):
+                F = F + getattr(source, field_type)(r, t)
+            else:
+                F = F + source._sum(r, t, field_type)
+
+        # It is possible to overwrite the default output manipulations.
+        transform = default(transform, self.transform)
+        observable = default(observable, self.observable)
+
+        F = transform(r, F)
+        F = self._observe(F, observable=observable)
+        return F
+
+    @broadcast_spacetime
+    def E(self, r, t=.0, transform=None, observable=None):
+        &#34;&#34;&#34; Returns the electric field at location r at time t. &#34;&#34;&#34;
+        return self._sum(r, t, &#39;E&#39;, transform=transform, observable=observable)
+
+    @broadcast_spacetime
+    def B(self, r, t=.0, transform=None, observable=None):
+        &#34;&#34;&#34; Returns the uw field at location r at time t. &#34;&#34;&#34;
+        return self._sum(r, t, &#39;B&#39;, transform=transform, observable=observable)
+
+    @broadcast_spacetime
+    def S(self, r, t=.0, transform=None, observable=None):
+        &#34;&#34;&#34; Returns the Poynting vector field at location r at time t. &#34;&#34;&#34;
+        return self._sum(r, t, &#39;S&#39;, transform=transform, observable=observable)
+
+    @staticmethod
+    def _observe(F, observable=&#39;uvw&#39;):
+        if observable == &#39;uvw&#39;:
+            return F
+        elif observable == &#39;norm&#39;:
+            return norm(F)
+        elif observable == &#39;uv&#39;:
+            return F[..., (0, 1)]
+        elif observable == &#39;uw&#39;:
+            return F[..., (0, 2)]
+        elif observable == &#39;vw&#39;:
+            return F[..., (1, 2)]
+        elif type(observable) in (tuple, int):
+            return F[..., observable]
+        else:
+            raise ValueError(observable, &#34; is not a valid observable.&#34;)
+
+    def get_source_attributes(self, attribute, as_array=True):
+        #TODO, add denesting function?
+        attributes = {}
+        for key, source in self.items():
+            if isinstance(source, Source):
+                attributes[key] = getattr(source, attribute)
+            else:
+                attributes[key] = source.get_source_attributes(attribute, as_array=as_array)
+        if as_array:
+            try:
+                # Assume that attr is a JProperty and thus callable.
+                return np.array([attr() for attr in attributes.values()])
+            except KeyError:
+                return np.array(attributes.values())
+        else:
+            return attributes
+
+    def get_locations_array(self):
+        #BACKWARD COMPATABILITY, REMOVE AT SOME POINT
+        return self.get_source_attributes(&#34;location&#34;)
+
+    def __add__(self, addition):
+        if isinstance(addition, Source):
+            self[uuid.uuid4()] = addition
+        elif isinstance(addition, SourceCollection):
+            self.update(addition)
+        return self
+
+    def update(self, addition, **kwargs):
+        if isinstance(addition, (list, tuple)):
+            addition = {uuid.uuid4(): value for value in addition}
+        super().update(addition)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>collections.OrderedDict</li>
+<li>builtins.dict</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="jefpy.physics.Wire" href="#jefpy.physics.Wire">Wire</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="jefpy.physics.SourceCollection.B"><code class="name flex">
+<span>def <span class="ident">B</span></span>(<span>self, r, t=0.0, transform=None, observable=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the uw field at location r at time t.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@broadcast_spacetime
+def B(self, r, t=.0, transform=None, observable=None):
+    &#34;&#34;&#34; Returns the uw field at location r at time t. &#34;&#34;&#34;
+    return self._sum(r, t, &#39;B&#39;, transform=transform, observable=observable)</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.SourceCollection.E"><code class="name flex">
+<span>def <span class="ident">E</span></span>(<span>self, r, t=0.0, transform=None, observable=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the electric field at location r at time t.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@broadcast_spacetime
+def E(self, r, t=.0, transform=None, observable=None):
+    &#34;&#34;&#34; Returns the electric field at location r at time t. &#34;&#34;&#34;
+    return self._sum(r, t, &#39;E&#39;, transform=transform, observable=observable)</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.SourceCollection.S"><code class="name flex">
+<span>def <span class="ident">S</span></span>(<span>self, r, t=0.0, transform=None, observable=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the Poynting vector field at location r at time t.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@broadcast_spacetime
+def S(self, r, t=.0, transform=None, observable=None):
+    &#34;&#34;&#34; Returns the Poynting vector field at location r at time t. &#34;&#34;&#34;
+    return self._sum(r, t, &#39;S&#39;, transform=transform, observable=observable)</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.SourceCollection.get_locations_array"><code class="name flex">
+<span>def <span class="ident">get_locations_array</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_locations_array(self):
+    #BACKWARD COMPATABILITY, REMOVE AT SOME POINT
+    return self.get_source_attributes(&#34;location&#34;)</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.SourceCollection.get_source_attributes"><code class="name flex">
+<span>def <span class="ident">get_source_attributes</span></span>(<span>self, attribute, as_array=True)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_source_attributes(self, attribute, as_array=True):
+    #TODO, add denesting function?
+    attributes = {}
+    for key, source in self.items():
+        if isinstance(source, Source):
+            attributes[key] = getattr(source, attribute)
+        else:
+            attributes[key] = source.get_source_attributes(attribute, as_array=as_array)
+    if as_array:
+        try:
+            # Assume that attr is a JProperty and thus callable.
+            return np.array([attr() for attr in attributes.values()])
+        except KeyError:
+            return np.array(attributes.values())
+    else:
+        return attributes</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.SourceCollection.update"><code class="name flex">
+<span>def <span class="ident">update</span></span>(<span>self, addition, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>D.update([E, ]**F) -&gt; None.
+Update D from dict/iterable E and F.
+If E is present and has a .keys() method, then does:
+for k in E: D[k] = E[k]
+If E is present and lacks a .keys() method, then does:
+for k, v in E: D[k] = v
+In either case, this is followed by: for k in F:
+D[k] = F[k]</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update(self, addition, **kwargs):
+    if isinstance(addition, (list, tuple)):
+        addition = {uuid.uuid4(): value for value in addition}
+    super().update(addition)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="jefpy.physics.Uniform"><code class="flex name class">
+<span>class <span class="ident">Uniform</span></span>
+<span>(</span><span>E=None, B=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Space independent fields.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Uniform(Source):
+    &#34;&#34;&#34; Space independent fields. &#34;&#34;&#34;
+
+    _E = JProperty(np.zeros(3))
+    _B = JProperty(np.zeros(3))
+
+    def __init__(self, E=None, B=None):
+        #super().__init__()
+        self._E = E
+        self._B = B
+
+    @broadcast_spacetime
+    def E(self, r, t):
+        return match_shape(self._E(t), r)
+
+    @broadcast_spacetime
+    def B(self, r, t):
+        return match_shape(self._B(t), r)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="jefpy.physics.Source" href="#jefpy.physics.Source">Source</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="jefpy.physics.Source" href="#jefpy.physics.Source">Source</a></b></code>:
+<ul class="hlist">
+<li><code><a title="jefpy.physics.Source.B" href="#jefpy.physics.Source.B">B</a></code></li>
+<li><code><a title="jefpy.physics.Source.E" href="#jefpy.physics.Source.E">E</a></code></li>
+<li><code><a title="jefpy.physics.Source.S" href="#jefpy.physics.Source.S">S</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="jefpy.physics.Wire"><code class="flex name class">
+<span>class <span class="ident">Wire</span></span>
+<span>(</span><span>sources=None, observable='uvw', transform=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A collection of consecutive source_segments that carry the same current.
+A wire is a collection of wire source_segments. The segmentation is built-in if
+one of the class methods is used (from_curve(), polygon(), or cicrle())
+It is possible to define wires that are not a loop, but be careful
+with the interpretation as such a construct does not conserve charge.</p>
+<p>sources: a Source object or a collection of Source objects.
+observable: str / tuple / int
+Applies a tunable observation to the field.
+Options are 'uvw', 'norm', 'uv', 'uw', 'vw', or a tuple specifying
+which spatial dimension need to be taken, or an int representing one
+single dimension. Note that without transformation, uvw = xyz. However
+with transformation, uvw represent the new coordinate system dimensions.
+transform: callback
+Coordinate system transformation to apply to the vector field.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Wire(SourceCollection):
+    &#34;&#34;&#34;
+    A collection of consecutive source_segments that carry the same current.
+    A wire is a collection of wire source_segments. The segmentation is built-in if
+    one of the class methods is used (from_curve(), polygon(), or cicrle())
+    It is possible to define wires that are not a loop, but be careful
+    with the interpretation as such a construct does not conserve charge.
+    &#34;&#34;&#34;
+
+    line = JProperty()
+    I = JProperty(1.0)
+    dIdt = JProperty(0.0)
+    movement = JProperty(np.zeros(3))
+
+    @classmethod
+    def curve(cls, curve, num_segments=50, I=None, dI_dt=None):
+        &#34;&#34;&#34;
+        Creates a wire based on an analytical curve. It handles segmentation
+        of the curve into PointSources.  A curve is some function
+        of s and t, where s is the curve parametrization between 0 and 1,
+        and t is the time. The curve function should return a 3D coordinate when
+        called for s and t. Note that callbacks are returned for the source_segments,
+        so the curve can change shape as a function of time.
+
+        :param curve: callable function of s and t
+        :param num_segments: int, number of PointSource elements to subdivide
+                             he curve in. Higher is more accurate, but increases
+                             computation time.
+        :param I: callback or float, current as a function of time.
+        :param dI_dt: callback or float, derivative of the  current as a
+                     function of time.
+        &#34;&#34;&#34;
+        s = np.linspace(0, 1.0, num_segments + 1)
+        segments = []
+        for i in range(0, num_segments):
+            def line(t, i=i):
+                return (curve(s[i], t), curve(s[i + 1], t))
+            segments.append(WireSegment(line=line, I=I, dI_dt=dI_dt))
+        return cls(segments)
+
+    @classmethod
+    def polygon(cls, nodes, num_segments=50, I=None, dI_dt=None, movement=None):
+        &#34;&#34;&#34;
+        A wire based on coordinates connected by straight lines.
+        :param nodes: (:, 3) array, coordinates of the polygon.
+        :param num_segments: int, number of PointSource elements to subdivide
+                             he curve in. Higher is more accurate, but increases
+                             computation time.
+        :param I: callback or float, current as a function of time.
+        :param dI_dt: callback or float, derivative of the  current as a
+                     function of time.
+        :param movement: callable, function of time that returns a vector
+                         which is added to all curve elements. This makes it
+                         possible to let the polygon move in space as a rigid
+                         body.
+        &#34;&#34;&#34;
+        movement = default(movement, lambda t: np.zeros(3))
+        nodes = np.array(nodes)
+        l = [nodes[i + 1, :] - nodes[i, :] for i in range(len(nodes[:, 0]) - 1)]
+        l_norm = np.array(list(map(np.linalg.norm, l)))
+        L = np.sum(l_norm)
+        l_sum = np.cumsum(np.concatenate(([0], l_norm)))
+
+        def curve(s, t):
+            i = np.argmax((s * L) &lt; l_sum) - 1
+            return movement(t) + nodes[i, :] \
+                   + (s * L - l_sum[i]) * l[i] / np.linalg.norm(l[i])
+
+        return cls.curve(curve, num_segments, I, dI_dt)
+
+    @classmethod
+    def circle(cls, center=(0, 0, 0), radius=1.0,
+               normal=None, movement=None,
+               num_segments=50, I=1.0, dI_dt=0.0):
+        &#34;&#34;&#34;
+        Creates a circular wire.
+        :param center: 3-array,
+        :param radius: float,
+        :param normal: 3-array, axial vector wrt the circle surface.
+        :param num_segments: int, number of PointSource elements to subdivide
+                             he curve in. Higher is more accurate, but increases
+                             computation time.
+        :param I: callback or float, current as a function of time.
+        :param dI_dt: callback or float, derivative of the  current as a
+                     function of time.
+        :param movement: callable, function of time that returns a vector
+                         which is added to all curve elements. This makes it
+                         possible to let the circle move in space.
+        &#34;&#34;&#34;
+
+        movement = default(movement, lambda t: np.zeros(3))
+        normal = default(normal, (0, 0, 1))
+        normal = normal / np.linalg.norm(normal)
+        u = np.linalg.norm(np.array([-normal[0], normal[1], 0]))
+        if normal[0] == 0 and normal[1] == 0:
+            u = np.array([0, 1, 0])
+        v = cross(normal, u)
+        v = v / np.linalg.norm(v)
+        def curve(s, t):
+            return movement(t) + center + radius * u * np.cos(s * 2 * np.pi) \
+                   + radius * v * np.sin(s * 2 * np.pi)
+        return cls.curve(curve, num_segments, I, dI_dt)
+
+    def get_segmentation(self, t=0):
+        coordinates = []
+        for segment in self.values():
+            coordinates.extend(segment.line(t))
+        return np.array(coordinates)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="jefpy.physics.SourceCollection" href="#jefpy.physics.SourceCollection">SourceCollection</a></li>
+<li>collections.OrderedDict</li>
+<li>builtins.dict</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="jefpy.physics.Wire.circle"><code class="name flex">
+<span>def <span class="ident">circle</span></span>(<span>center=(0, 0, 0), radius=1.0, normal=None, movement=None, num_segments=50, I=1.0, dI_dt=0.0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a circular wire.
+:param center: 3-array,
+:param radius: float,
+:param normal: 3-array, axial vector wrt the circle surface.
+:param num_segments: int, number of PointSource elements to subdivide
+he curve in. Higher is more accurate, but increases
+computation time.
+:param I: callback or float, current as a function of time.
+:param dI_dt: callback or float, derivative of the
+current as a
+function of time.
+:param movement: callable, function of time that returns a vector
+which is added to all curve elements. This makes it
+possible to let the circle move in space.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def circle(cls, center=(0, 0, 0), radius=1.0,
+           normal=None, movement=None,
+           num_segments=50, I=1.0, dI_dt=0.0):
+    &#34;&#34;&#34;
+    Creates a circular wire.
+    :param center: 3-array,
+    :param radius: float,
+    :param normal: 3-array, axial vector wrt the circle surface.
+    :param num_segments: int, number of PointSource elements to subdivide
+                         he curve in. Higher is more accurate, but increases
+                         computation time.
+    :param I: callback or float, current as a function of time.
+    :param dI_dt: callback or float, derivative of the  current as a
+                 function of time.
+    :param movement: callable, function of time that returns a vector
+                     which is added to all curve elements. This makes it
+                     possible to let the circle move in space.
+    &#34;&#34;&#34;
+
+    movement = default(movement, lambda t: np.zeros(3))
+    normal = default(normal, (0, 0, 1))
+    normal = normal / np.linalg.norm(normal)
+    u = np.linalg.norm(np.array([-normal[0], normal[1], 0]))
+    if normal[0] == 0 and normal[1] == 0:
+        u = np.array([0, 1, 0])
+    v = cross(normal, u)
+    v = v / np.linalg.norm(v)
+    def curve(s, t):
+        return movement(t) + center + radius * u * np.cos(s * 2 * np.pi) \
+               + radius * v * np.sin(s * 2 * np.pi)
+    return cls.curve(curve, num_segments, I, dI_dt)</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.Wire.curve"><code class="name flex">
+<span>def <span class="ident">curve</span></span>(<span>curve, num_segments=50, I=None, dI_dt=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates a wire based on an analytical curve. It handles segmentation
+of the curve into PointSources.
+A curve is some function
+of s and t, where s is the curve parametrization between 0 and 1,
+and t is the time. The curve function should return a 3D coordinate when
+called for s and t. Note that callbacks are returned for the source_segments,
+so the curve can change shape as a function of time.</p>
+<p>:param curve: callable function of s and t
+:param num_segments: int, number of PointSource elements to subdivide
+he curve in. Higher is more accurate, but increases
+computation time.
+:param I: callback or float, current as a function of time.
+:param dI_dt: callback or float, derivative of the
+current as a
+function of time.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def curve(cls, curve, num_segments=50, I=None, dI_dt=None):
+    &#34;&#34;&#34;
+    Creates a wire based on an analytical curve. It handles segmentation
+    of the curve into PointSources.  A curve is some function
+    of s and t, where s is the curve parametrization between 0 and 1,
+    and t is the time. The curve function should return a 3D coordinate when
+    called for s and t. Note that callbacks are returned for the source_segments,
+    so the curve can change shape as a function of time.
+
+    :param curve: callable function of s and t
+    :param num_segments: int, number of PointSource elements to subdivide
+                         he curve in. Higher is more accurate, but increases
+                         computation time.
+    :param I: callback or float, current as a function of time.
+    :param dI_dt: callback or float, derivative of the  current as a
+                 function of time.
+    &#34;&#34;&#34;
+    s = np.linspace(0, 1.0, num_segments + 1)
+    segments = []
+    for i in range(0, num_segments):
+        def line(t, i=i):
+            return (curve(s[i], t), curve(s[i + 1], t))
+        segments.append(WireSegment(line=line, I=I, dI_dt=dI_dt))
+    return cls(segments)</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.Wire.polygon"><code class="name flex">
+<span>def <span class="ident">polygon</span></span>(<span>nodes, num_segments=50, I=None, dI_dt=None, movement=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A wire based on coordinates connected by straight lines.
+:param nodes: (:, 3) array, coordinates of the polygon.
+:param num_segments: int, number of PointSource elements to subdivide
+he curve in. Higher is more accurate, but increases
+computation time.
+:param I: callback or float, current as a function of time.
+:param dI_dt: callback or float, derivative of the
+current as a
+function of time.
+:param movement: callable, function of time that returns a vector
+which is added to all curve elements. This makes it
+possible to let the polygon move in space as a rigid
+body.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def polygon(cls, nodes, num_segments=50, I=None, dI_dt=None, movement=None):
+    &#34;&#34;&#34;
+    A wire based on coordinates connected by straight lines.
+    :param nodes: (:, 3) array, coordinates of the polygon.
+    :param num_segments: int, number of PointSource elements to subdivide
+                         he curve in. Higher is more accurate, but increases
+                         computation time.
+    :param I: callback or float, current as a function of time.
+    :param dI_dt: callback or float, derivative of the  current as a
+                 function of time.
+    :param movement: callable, function of time that returns a vector
+                     which is added to all curve elements. This makes it
+                     possible to let the polygon move in space as a rigid
+                     body.
+    &#34;&#34;&#34;
+    movement = default(movement, lambda t: np.zeros(3))
+    nodes = np.array(nodes)
+    l = [nodes[i + 1, :] - nodes[i, :] for i in range(len(nodes[:, 0]) - 1)]
+    l_norm = np.array(list(map(np.linalg.norm, l)))
+    L = np.sum(l_norm)
+    l_sum = np.cumsum(np.concatenate(([0], l_norm)))
+
+    def curve(s, t):
+        i = np.argmax((s * L) &lt; l_sum) - 1
+        return movement(t) + nodes[i, :] \
+               + (s * L - l_sum[i]) * l[i] / np.linalg.norm(l[i])
+
+    return cls.curve(curve, num_segments, I, dI_dt)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="jefpy.physics.Wire.I"><code class="name">var <span class="ident">I</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, obj, type=None):
+    return obj.__dict__[self.name]</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.Wire.dIdt"><code class="name">var <span class="ident">dIdt</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, obj, type=None):
+    return obj.__dict__[self.name]</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.Wire.line"><code class="name">var <span class="ident">line</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, obj, type=None):
+    return obj.__dict__[self.name]</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.Wire.movement"><code class="name">var <span class="ident">movement</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, obj, type=None):
+    return obj.__dict__[self.name]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="jefpy.physics.Wire.get_segmentation"><code class="name flex">
+<span>def <span class="ident">get_segmentation</span></span>(<span>self, t=0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_segmentation(self, t=0):
+    coordinates = []
+    for segment in self.values():
+        coordinates.extend(segment.line(t))
+    return np.array(coordinates)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="jefpy.physics.SourceCollection" href="#jefpy.physics.SourceCollection">SourceCollection</a></b></code>:
+<ul class="hlist">
+<li><code><a title="jefpy.physics.SourceCollection.B" href="#jefpy.physics.SourceCollection.B">B</a></code></li>
+<li><code><a title="jefpy.physics.SourceCollection.E" href="#jefpy.physics.SourceCollection.E">E</a></code></li>
+<li><code><a title="jefpy.physics.SourceCollection.S" href="#jefpy.physics.SourceCollection.S">S</a></code></li>
+<li><code><a title="jefpy.physics.SourceCollection.update" href="#jefpy.physics.SourceCollection.update">update</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="jefpy.physics.WireSegment"><code class="flex name class">
+<span>class <span class="ident">WireSegment</span></span>
+<span>(</span><span>line=None, I=None, dI_dt=None, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A wire segment is a line that carries a current. It's assumed that a segment
+is small enough to be approximated by a points source.</p>
+<p>It is the responsibility of the user to create sensible
+configurations. This mostly concerns charge conservation.
+:param line: callable or (2,3)-array, start and end coordinate.
+:param I: callback or float, current as a function of time.
+:param dI_dt: callback or float, derivative of the
+current as a
+function of time.
+:param cut_off: float, length around location for which nan's are
+returned.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class WireSegment(PointSource):
+
+    #TODO d2I_dt2
+    &#34;&#34;&#34;
+    A wire segment is a line that carries a current. It&#39;s assumed that a segment
+    is small enough to be approximated by a points source.
+    &#34;&#34;&#34;
+
+    line = JProperty()
+    I = JProperty(1.0)
+    dIdt = JProperty(0.0)
+
+    def __init__(self, line=None, I=None, dI_dt=None, **kwargs):
+        &#34;&#34;&#34;
+        It is the responsibility of the user to create sensible
+        configurations. This mostly concerns charge conservation.
+        :param line: callable or (2,3)-array, start and end coordinate.
+        :param I: callback or float, current as a function of time.
+        :param dI_dt: callback or float, derivative of the  current as a
+                     function of time.
+        :param cut_off: float, length around location for which nan&#39;s are
+                        returned.
+        &#34;&#34;&#34;
+        self.line = line  # set attribute before super().__init__()
+        super().__init__(location=self._center, **kwargs)
+        self.I = I
+        self.dIdt = dI_dt
+
+    def _center(self, t):
+        &#34;&#34;&#34; Returns the center of the segment as function of time t.&#34;&#34;&#34;
+        r1, r2 = self.line(t)
+        return (r1 + r2) / 2
+
+    def _tangent(self, t):
+        &#34;&#34;&#34; Returns the tangent of the segment as function of time t.&#34;&#34;&#34;
+        r1, r2 = self.line(t)
+        return r1 - r2
+
+    def E_retarded_coordinates(self, R, tau):
+        R_norm = norm_keepdim(R)
+        term1 = self.dIdt(tau) * self._tangent(tau) / R_norm
+        return Constants.K_e / Constants.C ** 2 * term1
+
+    def B_retarded_coordinates(self, R, tau):
+        R_norm, R_unit = vec_split(R)
+        term1 = self.I(tau) * self._tangent(tau) / R_norm ** 2
+        term2 = self.dIdt(tau) * self._tangent(tau) / R_norm / Constants.C
+        return Constants.K_u * cross(term1 + term2, R_unit)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="jefpy.physics.PointSource" href="#jefpy.physics.PointSource">PointSource</a></li>
+<li><a title="jefpy.physics.Source" href="#jefpy.physics.Source">Source</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="jefpy.physics.WireSegment.I"><code class="name">var <span class="ident">I</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, obj, type=None):
+    return obj.__dict__[self.name]</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.WireSegment.dIdt"><code class="name">var <span class="ident">dIdt</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, obj, type=None):
+    return obj.__dict__[self.name]</code></pre>
+</details>
+</dd>
+<dt id="jefpy.physics.WireSegment.line"><code class="name">var <span class="ident">line</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def __get__(self, obj, type=None):
+    return obj.__dict__[self.name]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="jefpy.physics.PointSource" href="#jefpy.physics.PointSource">PointSource</a></b></code>:
+<ul class="hlist">
+<li><code><a title="jefpy.physics.PointSource.B" href="#jefpy.physics.Source.B">B</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.B_retarded_coordinates" href="#jefpy.physics.PointSource.B_retarded_coordinates">B_retarded_coordinates</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.E" href="#jefpy.physics.Source.E">E</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.E_retarded_coordinates" href="#jefpy.physics.PointSource.E_retarded_coordinates">E_retarded_coordinates</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.S" href="#jefpy.physics.Source.S">S</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.V" href="#jefpy.physics.PointSource.V">V</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.V_retarded_coordinates" href="#jefpy.physics.PointSource.V_retarded_coordinates">V_retarded_coordinates</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.retarded_coordinates" href="#jefpy.physics.PointSource.retarded_coordinates">retarded_coordinates</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="jefpy" href="index.html">jefpy</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="jefpy.physics.Constants" href="#jefpy.physics.Constants">Constants</a></code></h4>
+<ul class="">
+<li><code><a title="jefpy.physics.Constants.C" href="#jefpy.physics.Constants.C">C</a></code></li>
+<li><code><a title="jefpy.physics.Constants.EPS_0" href="#jefpy.physics.Constants.EPS_0">EPS_0</a></code></li>
+<li><code><a title="jefpy.physics.Constants.K_e" href="#jefpy.physics.Constants.K_e">K_e</a></code></li>
+<li><code><a title="jefpy.physics.Constants.K_u" href="#jefpy.physics.Constants.K_u">K_u</a></code></li>
+<li><code><a title="jefpy.physics.Constants.MU_0" href="#jefpy.physics.Constants.MU_0">MU_0</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="jefpy.physics.ElectricDipole" href="#jefpy.physics.ElectricDipole">ElectricDipole</a></code></h4>
+<ul class="">
+<li><code><a title="jefpy.physics.ElectricDipole.B_retarded_coordinates" href="#jefpy.physics.ElectricDipole.B_retarded_coordinates">B_retarded_coordinates</a></code></li>
+<li><code><a title="jefpy.physics.ElectricDipole.E_retarded_coordinates" href="#jefpy.physics.ElectricDipole.E_retarded_coordinates">E_retarded_coordinates</a></code></li>
+<li><code><a title="jefpy.physics.ElectricDipole.d2p_dt2" href="#jefpy.physics.ElectricDipole.d2p_dt2">d2p_dt2</a></code></li>
+<li><code><a title="jefpy.physics.ElectricDipole.dp_dt" href="#jefpy.physics.ElectricDipole.dp_dt">dp_dt</a></code></li>
+<li><code><a title="jefpy.physics.ElectricDipole.oscillator" href="#jefpy.physics.ElectricDipole.oscillator">oscillator</a></code></li>
+<li><code><a title="jefpy.physics.ElectricDipole.p" href="#jefpy.physics.ElectricDipole.p">p</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="jefpy.physics.MagneticDipole" href="#jefpy.physics.MagneticDipole">MagneticDipole</a></code></h4>
+<ul class="">
+<li><code><a title="jefpy.physics.MagneticDipole.B_retarded_coordinates" href="#jefpy.physics.MagneticDipole.B_retarded_coordinates">B_retarded_coordinates</a></code></li>
+<li><code><a title="jefpy.physics.MagneticDipole.E_retarded_coordinates" href="#jefpy.physics.MagneticDipole.E_retarded_coordinates">E_retarded_coordinates</a></code></li>
+<li><code><a title="jefpy.physics.MagneticDipole.d2m_dt2" href="#jefpy.physics.MagneticDipole.d2m_dt2">d2m_dt2</a></code></li>
+<li><code><a title="jefpy.physics.MagneticDipole.dm_dt" href="#jefpy.physics.MagneticDipole.dm_dt">dm_dt</a></code></li>
+<li><code><a title="jefpy.physics.MagneticDipole.m" href="#jefpy.physics.MagneticDipole.m">m</a></code></li>
+<li><code><a title="jefpy.physics.MagneticDipole.oscillator" href="#jefpy.physics.MagneticDipole.oscillator">oscillator</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="jefpy.physics.Observer" href="#jefpy.physics.Observer">Observer</a></code></h4>
+<ul class="">
+<li><code><a title="jefpy.physics.Observer.B" href="#jefpy.physics.Observer.B">B</a></code></li>
+<li><code><a title="jefpy.physics.Observer.E" href="#jefpy.physics.Observer.E">E</a></code></li>
+<li><code><a title="jefpy.physics.Observer.S" href="#jefpy.physics.Observer.S">S</a></code></li>
+<li><code><a title="jefpy.physics.Observer.r" href="#jefpy.physics.Observer.r">r</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="jefpy.physics.PointCharge" href="#jefpy.physics.PointCharge">PointCharge</a></code></h4>
+<ul class="">
+<li><code><a title="jefpy.physics.PointCharge.oscillator" href="#jefpy.physics.PointCharge.oscillator">oscillator</a></code></li>
+<li><code><a title="jefpy.physics.PointCharge.q" href="#jefpy.physics.PointCharge.q">q</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="jefpy.physics.PointSource" href="#jefpy.physics.PointSource">PointSource</a></code></h4>
+<ul class="">
+<li><code><a title="jefpy.physics.PointSource.B_retarded_coordinates" href="#jefpy.physics.PointSource.B_retarded_coordinates">B_retarded_coordinates</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.E_retarded_coordinates" href="#jefpy.physics.PointSource.E_retarded_coordinates">E_retarded_coordinates</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.V" href="#jefpy.physics.PointSource.V">V</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.V_retarded_coordinates" href="#jefpy.physics.PointSource.V_retarded_coordinates">V_retarded_coordinates</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.cut_off" href="#jefpy.physics.PointSource.cut_off">cut_off</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.location" href="#jefpy.physics.PointSource.location">location</a></code></li>
+<li><code><a title="jefpy.physics.PointSource.retarded_coordinates" href="#jefpy.physics.PointSource.retarded_coordinates">retarded_coordinates</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="jefpy.physics.Source" href="#jefpy.physics.Source">Source</a></code></h4>
+<ul class="">
+<li><code><a title="jefpy.physics.Source.B" href="#jefpy.physics.Source.B">B</a></code></li>
+<li><code><a title="jefpy.physics.Source.E" href="#jefpy.physics.Source.E">E</a></code></li>
+<li><code><a title="jefpy.physics.Source.S" href="#jefpy.physics.Source.S">S</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="jefpy.physics.SourceCollection" href="#jefpy.physics.SourceCollection">SourceCollection</a></code></h4>
+<ul class="">
+<li><code><a title="jefpy.physics.SourceCollection.B" href="#jefpy.physics.SourceCollection.B">B</a></code></li>
+<li><code><a title="jefpy.physics.SourceCollection.E" href="#jefpy.physics.SourceCollection.E">E</a></code></li>
+<li><code><a title="jefpy.physics.SourceCollection.S" href="#jefpy.physics.SourceCollection.S">S</a></code></li>
+<li><code><a title="jefpy.physics.SourceCollection.get_locations_array" href="#jefpy.physics.SourceCollection.get_locations_array">get_locations_array</a></code></li>
+<li><code><a title="jefpy.physics.SourceCollection.get_source_attributes" href="#jefpy.physics.SourceCollection.get_source_attributes">get_source_attributes</a></code></li>
+<li><code><a title="jefpy.physics.SourceCollection.update" href="#jefpy.physics.SourceCollection.update">update</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="jefpy.physics.Uniform" href="#jefpy.physics.Uniform">Uniform</a></code></h4>
+</li>
+<li>
+<h4><code><a title="jefpy.physics.Wire" href="#jefpy.physics.Wire">Wire</a></code></h4>
+<ul class="two-column">
+<li><code><a title="jefpy.physics.Wire.I" href="#jefpy.physics.Wire.I">I</a></code></li>
+<li><code><a title="jefpy.physics.Wire.circle" href="#jefpy.physics.Wire.circle">circle</a></code></li>
+<li><code><a title="jefpy.physics.Wire.curve" href="#jefpy.physics.Wire.curve">curve</a></code></li>
+<li><code><a title="jefpy.physics.Wire.dIdt" href="#jefpy.physics.Wire.dIdt">dIdt</a></code></li>
+<li><code><a title="jefpy.physics.Wire.get_segmentation" href="#jefpy.physics.Wire.get_segmentation">get_segmentation</a></code></li>
+<li><code><a title="jefpy.physics.Wire.line" href="#jefpy.physics.Wire.line">line</a></code></li>
+<li><code><a title="jefpy.physics.Wire.movement" href="#jefpy.physics.Wire.movement">movement</a></code></li>
+<li><code><a title="jefpy.physics.Wire.polygon" href="#jefpy.physics.Wire.polygon">polygon</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="jefpy.physics.WireSegment" href="#jefpy.physics.WireSegment">WireSegment</a></code></h4>
+<ul class="">
+<li><code><a title="jefpy.physics.WireSegment.I" href="#jefpy.physics.WireSegment.I">I</a></code></li>
+<li><code><a title="jefpy.physics.WireSegment.dIdt" href="#jefpy.physics.WireSegment.dIdt">dIdt</a></code></li>
+<li><code><a title="jefpy.physics.WireSegment.line" href="#jefpy.physics.WireSegment.line">line</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,13 @@
+.idea/
+__pycache__/visualize.cpython-37.pyc
+__pycache__/profile.cpython-37.pyc
+__pycache__/physics.cpython-37.pyc
+jefpy/__pycache__/visualize.cpython-37.pyc
+jefpy/__pycache__/utils.cpython-37.pyc
+jefpy/__pycache__/sampling.cpython-37.pyc
+jefpy/__pycache__/physics.cpython-37.pyc
+jefpy/__pycache__/__init__.cpython-37.pyc
+notebooks/.ipynb_checkpoints/
+*.pyc
+jefpy.egg-info/not-zip-safe
+jefpy.egg-info/
